@@ -21,15 +21,15 @@ class Database
 
                 $this->instance = $db;
             } catch (Exception $e) {
-                die($e->getMessage());
-            }
+                die($e->getMessage());            }
         }
     }
 
     public function query($sql)
     {
         $query = $this->instance->prepare($sql);
-        $query->exicute();
+        $query->bindValue($sql);
+        $query->execute();
 
         return $query;
     }

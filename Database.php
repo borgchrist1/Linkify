@@ -25,12 +25,12 @@ class Database
         }
     }
 
+
     public function query($sql)
     {
         $query = $this->instance->prepare($sql);
-        $query->bindValue($sql);
         $query->execute();
-
-        return $query;
+        $result = $query->fetchAll();
+        return $result;
     }
 }

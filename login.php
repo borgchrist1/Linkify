@@ -8,13 +8,11 @@ class Login{
         $query = $db->query("SELECT * FROM users
             WHERE email='".$email."' AND password='".$password."'");
 
-        $count = $query->rowCount();
-
-        if ($count === 1){
-            return "Successfully logedin";
-        } else {
-            return "Wrong email or password";
+        if (count($query) === 1){
+            return "Susses!";
         }
+            return "Wrong password or email";
+
     }
 
     public  function encryptPassword ($password)
@@ -24,7 +22,7 @@ class Login{
 
     public function cleanData ($data)
     {
-        $data = trim(stripcslashes($data));
-        return $data;
+        return trim(stripcslashes($data));
+
     }
 }

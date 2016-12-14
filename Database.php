@@ -6,7 +6,7 @@
 class Database
 {
     private $host = "127.0.0.1";
-    private $dbName = "";
+    private $dbName = "linkify";
     private $username = "root";
     private $password = "root";
     private $socetType = "mysql";

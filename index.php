@@ -6,6 +6,7 @@ session_start();
         <meta charset="UTF8">
         <title>Home</title>
     </head>
+    <body>
 <?php if (empty($_SESSION["id"])): ?>
 <form id="login" method="post" action="resources/lib/login.php">
     email:<input type="email" name="email">
@@ -18,6 +19,8 @@ session_start();
 <form id="logout" method="post" action="logout.php">
     <input type="submit" value="Logout">
 </form>
+<a href="post.php">Creat new post</a>
 <?php endif; ?>
 <p><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
+    </body>
 </html>

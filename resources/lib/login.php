@@ -3,8 +3,8 @@
 
 session_start();
 //session_unset();
-require "Database.php";
-require "Login.php";
+require "../../classes/Login.php";
+require "../../classes/Database.php";
 
 $db = new Database();
 $login = new Login();

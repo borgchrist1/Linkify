@@ -1,15 +1,16 @@
 <?php
 
 class Login{
-
     public function loginUser ($email, $password)
     {
         $db = new Database();
         $query = $db->query("SELECT * FROM users
             WHERE email='".$email."' AND password='".$password."'");
 
+        $_SESSION["id"] = $query[0]["id"];
+
         if (count($query) === 1){
-            return "Susses!";
+            return "Secsess";
         }
             return "Wrong password or email";
 

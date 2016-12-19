@@ -4,7 +4,7 @@ require "../../classes/Register.php";
 require "../../classes/Database.php";
 $_SESSION["message"] = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
-    $_ses["message"] = "";
+    $_SESSION["message"] = "";
     $newUser = new Register();
     $correctEmail = $newUser->checkEmail($_POST["email"]);
     if ($correctEmail){
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
             if ($correctPassword){
                 $encryptedPassword = $newUser->encryptPassword($_POST["password"]);
                 $result = $newUser->addUser($_POST["email"], $encryptedPassword);
-                $_SESSION["message"] = "sucsess";
+                $_SESSION["message"] = "success";
                 header("Location: ../../register.php");
             }else {
                 $_SESSION["message"] = "Your passwords does not match";
@@ -29,3 +29,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         header("Location: ../../register.php");
     }
 }
+
+//header("Location: /");

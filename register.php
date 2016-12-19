@@ -14,6 +14,6 @@ session_start();
             Re-Password:<input type="password" name="rePassword">
             <input type="submit" value="Register">
         </form>
-        <?php print $_SESSION["message"]; ?>
+        <?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?>
     </body>
 </html>

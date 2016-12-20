@@ -33,4 +33,13 @@ class Database
         $result = $query->fetchAll();
         return $result;
     }
+
+    public function getObjects($sql, $class)
+    {
+        $query = $this->instance->prepare($sql);
+        $query->execute();
+        $query->setFetchMode(PDO::FETCH_CLASS, $class);
+        $result = $query->fetchAll();
+        return $result;
+    }
 }

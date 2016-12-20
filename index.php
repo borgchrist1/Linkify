@@ -1,5 +1,7 @@
 <?php
 session_start();
+require "classes/Post.php";
+require "classes/Database.php";
 ?>
 <html>
     <head>
@@ -22,5 +24,9 @@ session_start();
 <a href="post.php">Creat new post</a>
 <?php endif; ?>
 <p><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
+    <?php
+        $posts = Post::getPosts();
+        print_r($posts);
+    ?>
     </body>
 </html>

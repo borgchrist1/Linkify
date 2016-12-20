@@ -6,13 +6,15 @@ class Post {
     private $author = null;
     private $date = null;
 
-    function  __construct($head, $post, $author, $date)
+    function  __construct($head = null, $post = null, $author = null, $date = null)
     {
-        $this->head = $head;
-        $this->post = $post;
-        $this->author = $author;
-        $this->date = $date;
+
+       if ($head !== null) $this->head = $head;
+       if ($post !== null) $this->post = $post;
+       if ($author !== null) $this->author = $author;
+       if ($date !== null)$this->date = $date;
     }
+
 
     public function getHead()
     {
@@ -42,4 +44,10 @@ class Post {
         return $query;
     }
 
+    Public static function getPosts()
+    {
+        $db = new Database();
+        $query = $db->getObjects("SELECT * FROM posts", "Post");
+        return $query;
+    }
 }

@@ -1,10 +1,10 @@
 <?php
 
 class Post {
-    private $head = null;
-    private $post = null;
-    private $author = null;
-    private $date = null;
+    private $head;
+    private $post;
+    private $author;
+    private $date;
 
     function  __construct($head = null, $post = null, $author = null, $date = null)
     {
@@ -44,10 +44,18 @@ class Post {
         return $query;
     }
 
-    Public static function getPosts()
+    Public function getPosts()
     {
         $db = new Database();
         $query = $db->getObjects("SELECT * FROM posts", "Post");
         return $query;
+    }
+
+    public function getSingelPost ($id)
+    {
+        $db = new Database();
+        $query = $db->getObjects("SELECT * FROM posts
+            WHERE id ='".$id."'", "Post");
+            return $query;
     }
 }

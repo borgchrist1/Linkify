@@ -8,7 +8,6 @@ class Post {
 
     function  __construct($head = null, $post = null, $author = null, $date = null)
     {
-
        if ($head !== null) $this->head = $head;
        if ($post !== null) $this->post = $post;
        if ($author !== null) $this->author = $author;
@@ -51,7 +50,7 @@ class Post {
         return $query;
     }
 
-    public function getSingelPost ($id)
+    public function getSinglePost ($id)
     {
         $db = new Database();
         $query = $db->getObjects("SELECT * FROM posts

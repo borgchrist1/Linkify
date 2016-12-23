@@ -3,8 +3,8 @@
 session_start();
 require "classes/Post.php";
 require "classes/Database.php";
-$posts = new  Post();
-$post = $posts->getSingelPost($_GET["id"]);
+$postObject = new  Post();
+$posts = $postObject->getSinglePost($_GET["id"]);
 ?>
 
 <html>
@@ -15,10 +15,10 @@ $post = $posts->getSingelPost($_GET["id"]);
     <body>
         <div>
             <?php
-                foreach ($post as $po):
-                print $po->getHead();
-                print $po->getPost();
-                print $po->getAuthor();
+                foreach ($posts as $post):
+                print $post->getHead();
+                print $post->getPost();
+                print $post->getAuthor();
                 endforeach;
             ?>
         </div>

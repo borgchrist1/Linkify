@@ -30,17 +30,22 @@ class User
         return $this->username;
     }
 
-    public function getUserObject($id)
+    public static function getUserObject($id)
     {
         $db = new Database();
         $query = $db->getObjects("SELECT name, username, email FROM users
             WHERE id ='".$id."'", "User");
+        return $query;
     }
 
-    public function insertChanges ($id)
+    public function insertChanges ($id, $name, $email, $username)
     {
         $db = new Database();
-        $query = $db->query("INSERT INTO ");
+        $query = $db->query("UPDATE users
+            SET name='".$name."'
+            SET email='".$email."'
+            SET username='".$username."'
+            WHERE id='".$id."'");
     }
 
 }

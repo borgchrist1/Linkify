@@ -25,7 +25,6 @@ class Database
         }
     }
 
-
     public function query($sql)
     {
         $query = $this->instance->prepare($sql);
@@ -42,4 +41,17 @@ class Database
         $result = $query->fetchAll();
         return $result;
     }
+
+//    public function getObjects($sql)
+//    {
+//        function newpost ($head, $post, $author, $date)
+//        {
+//            return new Post($head, $post, $author, $date);
+//        }
+//        $query = $this->instance->prepare($sql);
+//        $query->execute();
+//        //$query->setFetchMode(PDO::FETCH_CLASS, $class);
+//        $result = $query->fetchAll(PDO::FETCH_FUNC, "newpost");
+//        return $result;
+//    }
 }

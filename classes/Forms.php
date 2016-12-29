@@ -8,7 +8,7 @@ class Forms
         return trim(stripcslashes($data));
 
     }
-    
+
     Public function checkEmail ($email)
     {
 

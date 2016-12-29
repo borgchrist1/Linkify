@@ -7,10 +7,9 @@ class Login{
         $query = $db->query("SELECT * FROM users
             WHERE email='".$email."' AND password='".$password."'");
 
-        $_SESSION["id"] = $query[0]["id"];
-
         if (count($query) === 1){
-            return "Secsess";
+            $_SESSION["id"] = $query[0]["id"];
+            return "Success";
         }
             return "Wrong password or email";
 

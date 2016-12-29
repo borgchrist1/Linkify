@@ -5,13 +5,15 @@ class User
     private $email;
     private $username;
     private $password;
+    private $avatar;
 
-    public function __construct($name = null, $email = null, $username = null, $password = null)
+    public function __construct($name = null, $email = null, $username = null, $password = null, $avatar = null)
     {
         if ($name !== null) $this->name = $name;
         if ($email !== null) $this->email = $email;
         if ($username !== null) $this->username = $username;
         if ($password !== null) $this->password = $password;
+        if ($avatar !== null) $this->avatar = $avatar;
     }
 
 
@@ -30,10 +32,10 @@ class User
         return $this->username;
     }
 
-    public static function getUserObject($id)
+    public function getUserObject($id)
     {
         $db = new Database();
-        $query = $db->getObjects("SELECT name, username, email FROM users
+        $query = $db->getObjects("SELECT * FROM users
             WHERE id ='".$id."'", "User");
         return $query;
     }

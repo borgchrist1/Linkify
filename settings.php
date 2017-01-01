@@ -13,9 +13,9 @@ var_dump($user);
         <title>Settings</title>
     </head>
     <body>
-        <form id="settings-form" method="post" action="resources/lib/settings.php">
+        <form id="settings-form" method="post" action="resources/lib/settings.php" enctype="multipart/form-data">
 
-            Avatar:<input type="file" name="avatar" accept="img/*">
+            Avatar:<input type="file" name="file" accept="img/*">
             Name:<input type="text" name="name" value="">
             Username<input type="text" name="username" value="">
            Email:<input type="email" name="email" value="">

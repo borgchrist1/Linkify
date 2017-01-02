@@ -3,8 +3,11 @@
 session_start();
 require "classes/Post.php";
 require "classes/Database.php";
+require "classes/Comment.php";
 $postObject = new  Post();
 $posts = $postObject->getSinglePost($_GET["id"]);
+$commentObject = new Comment();
+$comments = $commentObject->getComments($_GET["id"]);
 ?>
 
 <html>
@@ -22,5 +25,18 @@ $posts = $postObject->getSinglePost($_GET["id"]);
                 endforeach;
             ?>
         </div>
+        <div>
+            <?php
+            foreach ($comments as $comment):
+                print $comment->getComment();
+                $user = $comment->getUserId();
+            endforeach;
+            ?>
+        </div>
+
+    <form id="comment-form" method="post" action="resources/lib/topic.php">
+        <textarea name="comment"></textarea>
+        <input type="submit" value="Comment">
+    </form>
     </body>
 </html>

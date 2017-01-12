@@ -6,13 +6,13 @@ class Post {
     private $author;
     private $date;
 
-    function  __construct($head = null, $post = null, $author = null, $date = null)
-    {
-       if ($head !== null) $this->head = $head;
-       if ($post !== null) $this->post = $post;
-       if ($author !== null) $this->author = $author;
-       if ($date !== null)$this->date = $date;
-    }
+//    function  __construct($head = null, $post = null, $author = null, $date = null)
+//    {
+//       if ($head !== null) $this->head = $head;
+//       if ($post !== null) $this->post = $post;
+//       if ($author !== null) $this->author = $author;
+//       if ($date !== null)$this->date = $date;
+//    }
 
 
     public function getHead()
@@ -57,4 +57,10 @@ class Post {
             WHERE id ='".$id."'", "Post");
             return $query;
     }
+
+    public function object($arr)
+    {
+       return new self($arr);
+    }
+
 }

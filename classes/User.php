@@ -37,6 +37,7 @@ class User
         $db = new Database();
         $query = $db->getObjects("SELECT * FROM users
             WHERE id ='".$id."'", "User");
+
         return $query;
     }
 
@@ -49,5 +50,7 @@ class User
             SET username='".$username."'
             WHERE id='".$id."'");
     }
+
+    //return new self(name, email, username, password, avatar);
 
 }

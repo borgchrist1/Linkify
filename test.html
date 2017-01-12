@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="big-header">
+      <h1>Linkify</h1>
+    </div>
+    <header id="header">
+      <div class="menu-button">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+    </header>
+    <div class="left-panel">
+      <ul>
+        <li><img src="resources/img/design/home.png" alt="Home">HOME</li>
+        <li><img src="resources/img/design/profile.png" alt="Profile">PROIFILE</li>
+        <li><img src="resources/img/design/settings.png" alt="">SETTINGS</li>
+        <li><img src="resources/img/design/login.png" alt="login">LOGIN</li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+
+      <p>console.log('hello');
+      let menu = document.querySelector('#header');
+      let leftPanel = document.querySelector('.left-panel');
+      let menuPosition = menu.getBoundingClientRect();
+      let placeholder = document.createElement('div');
+      placeholder.style.width = menuPosition.width + 'px';
+      placeholder.style.height = menuPosition.height + 'px';
+      let leftPlaceholder = document.createElement('div');
+      leftPlaceholder.style.width = menuPosition.width + 'px';
+      leftPlaceholder.style.height = menuPosition.height + 'px';
+      let isAdded = false;
+
+      window.addEventListener('scroll', function() {
+          if (window.pageYOffset >= menuPosition.top && !isAdded) {
+              menu.classList.add('sticky');
+              menu.parentNode.insertBefore(placeholder, menu);
+              leftPanel.classList.add('fixed');
+              leftPanel.parentNode.insertBefore(leftPlaceholder, leftPanel)
+              isAdded = true;
+          } else if (window.pageYOffset < menuPosition.top && isAdded) {
+              menu.classList.remove('sticky');
+              menu.parentNode.removeChild(placeholder);
+              leftPanel.classList.remove('fixed');
+              leftPanel.parentNode.removeChild(leftPlaceholder);
+              isAdded = false;
+          }
+      });<br>
+      console.log('hello');
+      let menu = document.querySelector('#header');
+      let leftPanel = document.querySelector('.left-panel');
+      let menuPosition = menu.getBoundingClientRect();
+      let placeholder = document.createElement('div');
+      placeholder.style.width = menuPosition.width + 'px';
+      placeholder.style.height = menuPosition.height + 'px';
+      let leftPlaceholder = document.createElement('div');
+      leftPlaceholder.style.width = menuPosition.width + 'px';
+      leftPlaceholder.style.height = menuPosition.height + 'px';
+      let isAdded = false;
+
+      window.addEventListener('scroll', function() {
+          if (window.pageYOffset >= menuPosition.top && !isAdded) {
+              menu.classList.add('sticky');
+              menu.parentNode.insertBefore(placeholder, menu);
+              leftPanel.classList.add('fixed');
+              leftPanel.parentNode.insertBefore(leftPlaceholder, leftPanel)
+              isAdded = true;
+          } else if (window.pageYOffset < menuPosition.top && isAdded) {
+              menu.classList.remove('sticky');
+              menu.parentNode.removeChild(placeholder);
+              leftPanel.classList.remove('fixed');
+              leftPanel.parentNode.removeChild(leftPlaceholder);
+              isAdded = false;
+          }
+      });</p>
+    </div>
+<!-- <footer ></footer> -->
+<script type="text/javascript" src="resources/js/main.js">
+</script>
+  </body>
+</html>

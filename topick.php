@@ -34,7 +34,7 @@ $comments = $commentObject->getComments($_GET["id"]);
             ?>
         </div>
 
-    <form id="comment-form" method="post" action="resources/lib/topic.php">
+    <form id="comment-form" method="post" action="resources/lib/topick.php">
         <textarea name="comment"></textarea>
         <input type="submit" value="Comment">
     </form>

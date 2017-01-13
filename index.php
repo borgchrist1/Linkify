@@ -25,13 +25,14 @@ $posts = $postObjects->getPosts();
       </header>
       <div class="left-panel">
         <ul>
-          <li><img src="resources/img/design/home.png" alt="Home">HOME</li>
-          <li><img src="resources/img/design/profile.png" alt="Profile">PROIFILE</li>
-          <li><img src="resources/img/design/settings.png" alt="">SETTINGS</li>
+            <a href="index.php"><li><img src="resources/img/design/home.png" alt="Home">HOME</li></a>
           <?php if (!empty($_SESSION["id"])): ?>
-          <li><img src="resources/img/design/logout.png." alt="LOGOUT">LOGOUT</li>
+              <a href="post.php"><li><img src="resources/img/design/post.png" alt="Profile">NEW POST</li></a>
+              <li><img src="resources/img/design/profile.png" alt="Profile">PROIFILE</li>
+              <a href="settings.php"><li><img src="resources/img/design/settings.png" alt="">SETTINGS</li></a>
+              <a href="logout.php"><li><img src="resources/img/design/logout.png" alt="LOGOUT">LOGOUT</li></a>
           <?php else: ?>
-            <li><img src="resources/img/design/login.png." alt="LOGIN">LOGIN</li>
+            <li><img src="resources/img/design/login.png" alt="LOGIN">LOGIN</li>
           <?php endif; ?>
         </ul>
       </div>
@@ -44,17 +45,21 @@ $posts = $postObjects->getPosts();
                     <input type="submit" value="Login">
                 </form>
                 <a href="register.php">Register</a>
-                <?php else: ?>
-                <form id="logout" method="post" action="logout.php">
-                    <input type="submit" value="Logout">
-                </form>
-                <a href="post.php">Creat new post</a>
                 <?php endif; ?>
                 <p><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
-                    <?php foreach ($posts as $post): ?>
-                <div>
-                    <a href="topick.php?id=<?php print $post->id; ?>"><?php print $post->getHead(); ?></a><br>
-                </div>
+                <?php foreach ($posts as $post): ?>
+                        <!--<a href="topick.php?id=<?php print $post->id; ?>"><?php print $post->getHead(); ?></a><br>-->
+                    <div class="post-wrapper">
+                        <div class="post-head">
+                            <h2><a href="topick.php?id=<?php print $post->id; ?>"><?php print $post->getHead(); ?></a></h2>
+                        </div>
+                        <div class="post-avatar">
+
+                        </div>
+                        <div class="post-content">
+                            <p><?php print $post->getPost(); ?></p>
+                        </div>
+                    </div>
                 <?php endforeach; ?>
       </div>
   <!-- <footer ></footer> -->

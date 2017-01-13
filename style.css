@@ -1,7 +1,7 @@
 body{
   margin: 0 auto;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 
 }
 
@@ -48,6 +48,9 @@ header{
 .menu-button{
   padding-top: 18px;
   padding-left: 15px;
+
+  width: 30px;
+
 }
 
 span{
@@ -59,16 +62,47 @@ span{
 }
 
  .page-wrapper {
-  height: 100%;
+  /*height: 100%;*/
   width: 95%;
   /*margin-bottom: 70px;*/
   float: right;
 overflow: hidden;
 }
 
+.post-wrapper{
+  -moz-box-shadow:     0 0 15px #353535;
+  -webkit-box-shadow:  0 0 15px #353535;
+   box-shadow:         0 0 15px #353535;
+   border-bottom: 1px solid black;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10%;
+}
+
+.post-head{
+  padding: 1%;
+  border-bottom: 2px solid #c60060;
+}
+
+.post-avatar{
+  height: 200px;
+  width: 140px;
+  border: 1px solid black;
+  padding: 2%;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-content{
+  padding: 2%;
+
+}
+
 .left-panel {
   float: left;
-  height: 100%;
+  height: 100vh;
   /*margin-bottom: 70px;*/
   overflow: hidden;
   background: #726e70;
@@ -79,6 +113,8 @@ overflow: hidden;
    bottom: 70px;
    /*z-index: 10;*/
 }
+
+
 
 .left-panel img{
   height: 40px;
@@ -131,5 +167,5 @@ footer{
 }
 
 p{
-  font-size: 40px;
+  font-size: 25px;
 }

@@ -46,7 +46,7 @@ $posts = $postObjects->getPosts();
                 </form>
                 <a href="register.php">Register</a>
                 <?php endif; ?>
-                <p><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
+          <div class="message"><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></div>
                 <?php foreach ($posts as $post): ?>
                         <!--<a href="topick.php?id=<?php print $post->id; ?>"><?php print $post->getHead(); ?></a><br>-->
                     <div class="post-wrapper">
@@ -67,5 +67,4 @@ $posts = $postObjects->getPosts();
   </script>
     </body>
   </html>
-    </body>
-</html>
+

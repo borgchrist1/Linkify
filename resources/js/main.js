@@ -41,3 +41,10 @@ if (isOpend) {
   isOpend = true;
 }
 });
+
+let message = document.querySelector('.message');
+window.onLoad = function(){
+    setTimeout(function(){
+        message.classList.add('disable');
+    }, 3000);
+};

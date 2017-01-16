@@ -10,16 +10,16 @@ class Query
         $this->db = new Database();
     }
 
-    public function getObjectById ($id, $class)
+    public function getObjectById ($id, $table, $class)
     {
-        $query = $this->db->getObjects("SELECT * FROM $class
-            WHERE id ='".$id."'", $class);
+        $query = $this->db->getObjects("SELECT * FROM {$table}
+            WHERE id = {$id}", $class);
         return $query;
     }
 
-    public function getObjects ($class)
+    public function getObjects ($table, $class)
     {
-        $query = $this->db->getObjects("SELECT * FROM $class", $class);
+        $query = $this->db->getObjects("SELECT * FROM {$table}", $class);
         return $query;
     }
 
@@ -56,6 +56,13 @@ class Query
     }
 
     public  function insertData($rows, $values, $table)
+    {
+        $query = $this->db->query("INSERT INTO $table ('".$rows."')
+        VALUES ('".$values."')", $table);
+        return $query;
+    }
+
+    public  function insertDataById($rows, $values, $table)
     {
         $query = $this->db->query("INSERT INTO $table ('".$rows."')
         VALUES ('".$values."')", $table);

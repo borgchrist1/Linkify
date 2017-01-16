@@ -5,7 +5,6 @@ require "classes/User.php";
 require "classes/Database.php";
 $userObject = new User();
 $user = $userObject->getUserObject($_SESSION["id"]);
-var_dump($user);
 ?>
 <html>
     <head>

@@ -35,11 +35,19 @@ class Post {
         return $this->date;
     }
 
-    Public function createNewPost()
+//    Public function createNewPost()
+//    {
+//        $db = new Database();
+//        $query = $db->query("INSERT INTO posts (head, post, user_id, `date`)
+//            VALUES ('".$this->getHead()."','".$this->getPost()."','".$this->author."','".$this->getDate()."')");
+//        return $query;
+//    }
+
+    Public function createNewPost($head, $post, $userId, $date)
     {
         $db = new Database();
-        $query = $db->query("INSERT INTO posts (head, post, user_id, `date`)
-            VALUES ('".$this->getHead()."','".$this->getPost()."','".$this->author."','".$this->getDate()."')");
+        $query = $db->query("INSERT INTO posts (head, post, user_id, datum)
+        VALUES ('".$head."', '".$post."', '".$userId."', '".$date."')");
         return $query;
     }
 

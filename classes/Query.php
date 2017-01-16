@@ -46,6 +46,10 @@ class Query
         $i = 0;
         foreach ($arr as $key => $value) {
             $i++;
+            if(!is_numeric($value)) {
+                $value = "'" . $value . "'";
+            }
+
             if (count($arr) === $i) {
                 $values = $values . $value;
             } else {
@@ -57,17 +61,12 @@ class Query
 
     public  function insertData($rows, $values, $table)
     {
-        $query = $this->db->query("INSERT INTO $table ('".$rows."')
-        VALUES ('".$values."')", $table);
+        $query = $this->db->query("INSERT INTO {$table} ({$rows})
+        VALUES ({$values})");
         return $query;
     }
 
-    public  function insertDataById($rows, $values, $table)
-    {
-        $query = $this->db->query("INSERT INTO $table ('".$rows."')
-        VALUES ('".$values."')", $table);
-        return $query;
-    }
+
 
 
 }

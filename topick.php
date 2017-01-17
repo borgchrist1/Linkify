@@ -34,9 +34,11 @@ $comments = $commentObject->getComments($_GET["id"]);
             ?>
         </div>
 
-    <form id="comment-form" method="post" action="resources/lib/topick.php">
+    <form id="comment-form" method="post" action="resources/lib/comments.php">
         <textarea name="comment"></textarea>
         <input type="submit" value="Comment">
+        <input type="hidden" name="user_id" value="<?php print $_SESSION["id"]; ?>">
+        <input type="hidden" name="table" value="comments">
     </form>
     </body>
 </html>

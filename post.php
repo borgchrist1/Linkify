@@ -23,9 +23,12 @@ session_start();
     </form>
     <form id="form-post" method="post" action="resources/lib/post.php">
         Head:<input type="text" name="head">
+        <textarea name="post">Write your post here.....</textarea>
+        <input type="hidden" name="user_id" value="<?php print $_SESSION["id"]; ?>">
+        <input type="hidden" name="table" value="users">
+        <button type="submit" form="form-post">Post</button>
     </form>
-    <textarea name="post" form="form-post">Write your post here.....</textarea>
-    <button type="submit" form="form-post">Post</button>
+
 <?php endif; ?>
 <p><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
 

@@ -1,9 +1,10 @@
 <?php
 
 session_start();
-require "classes/Post.php";
+//require "classes/Post.php";
 require "classes/Database.php";
-require "classes/Comment.php";
+//require "classes/Comment.php";
+require 
 $postObject = new  Post();
 $posts = $postObject->getSinglePost($_GET["id"]);
 $commentObject = new Comment();

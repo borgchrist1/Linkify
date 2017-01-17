@@ -30,6 +30,26 @@ class Query
         return $query;
     }
 
+    public function insertChangesToPost ($id, $head, $post)
+    {
+        $db = new Database();
+        $query = $db->query("UPDATE posts
+            SET head='".$head."',
+            post='".$post."'
+            WHERE id='".$id."'");
+        return $query;
+    }
+
+    public function insertChangesToUser ($id, $name, $email, $username)
+    {
+        $db = new Database();
+        $query = $db->query("UPDATE users
+            SET name='".$name."'
+            SET email='".$email."'
+            SET username='".$username."'
+            WHERE id='".$id."'");
+    }
+
     public static function createRowString($arr)
     {
         $row = null;

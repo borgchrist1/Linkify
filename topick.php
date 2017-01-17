@@ -22,7 +22,7 @@ print_r($posts);
             <?php
             foreach ($posts as $post):
                 if($_SESSION["id"] === $post->getUser_id()):?>
-            <a href="post.php?id=<?php print $postId; ?>">edit</a>
+            <a href="edit-post.php?id=<?php print $postId; ?>">edit</a>
                 <?php endif; ?>
                 <?php print $post->getHead();
                 print $post->getPost();

@@ -43,23 +43,29 @@ class Forms
                    break;
                }
 
-               $arr["email"] = $this->uniqueEmail($value);
-               if (empty($arr["email"])){
+               $uniqeEmail = $this->uniqueEmail($value);
+               if ($uniqeEmail === 0){
                    return "email finns redan";
                    break;
                }
 
            }
 
+           if ($key === "password" || $key === "rePassword"){
+                $arr["password"] = $this->encryptPassword($value);
+               //print "3d <br>" . $value;
+               print $arr["password"] . "<br>";
+
+           }
+
            if ($key === "rePassword"){
-               if ($arr["password"] !== $arr["rePassword"]){
-                   return false;
+               $arr["rePassword"] = $this->encryptPassword($value);
+               if ($arr["rePassword"] !== $arr["password"]){
+                   return "Passwords don't match";
                    break;
                }
-           }
-           if ($key === "password"){
-                $arr["password"] = $this->encryptPassword($value);
-               print "3d <br>" . $value;
+
+               unset($arr['rePassword']);
            }
 
        }
@@ -72,8 +78,7 @@ class Forms
 
         $query = $db->query("SELECT * FROM users
             WHERE email='".$email."'");
-
-        if (count($query) !== 0){
+        if (count($query) > 0){
             print "false";
             return false;
         }

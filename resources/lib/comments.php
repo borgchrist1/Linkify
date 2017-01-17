@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     }
 
     //print $rows . "<br>" . $values;
-    $_SESSION["message"] = "Phu.. All went well";
+    $_SESSION["message"] = "Alright.. All went well";
     header("Location: /");
 }
 

@@ -1,6 +1,7 @@
 <?php
 
 class Post {
+    private $id;
     private $head;
     private $post;
     private $user_id;
@@ -8,6 +9,10 @@ class Post {
     private $vote;
 
 
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getHead()
     {

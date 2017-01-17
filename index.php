@@ -7,7 +7,7 @@ require "classes/Query.php";
 require "resources/lib/index-get-user.php";
 $postObjects = new Query();
 $posts = $postObjects->getObjects("posts", "Post");
-
+print_r($posts);
 ?>
 <html>
     <head>
@@ -54,10 +54,10 @@ $posts = $postObjects->getObjects("posts", "Post");
             <?php foreach ($posts as $post):
                 $user = getAuthor($post->getUser_id()); ?>
 
-                <!--<a href="topick.php?id=<?php print $post->id; ?>"><?php print $post->getHead(); ?></a><br>-->
+
                 <div class="post-wrapper">
                     <div class="post-head">
-                        <h2><a href="topick.php?id=<?php print $post->id; ?>"><?php print $post->getHead(); ?></a></h2>
+                        <h2><a href="topick.php?id=<?php print $post->getId(); ?>"><?php print $post->getHead(); ?></a></h2>
                     </div>
                     <div class="post-avatar">
                         <img src="resources/img/users/<?php print $user->getId() . "/" . $user->getAvatar(); ?>" height="100">

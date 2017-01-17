@@ -5,9 +5,9 @@ class Comment
     private $id;
     private $avatar;
     private $comment;
-    private $userId;
-    private $postId;
-    private $vote;
+    private $user_id;
+    private $post_id;
+    private $likes;
 
 //    public function __construct($id = null, $comment = null, $userId = null, $postId = null, $vote = null)
 //    {
@@ -35,19 +35,19 @@ class Comment
         return $this->comment;
     }
 
-    public function getPostId()
+    public function getPost_id()
     {
-        return $this->postId;
+        return $this->post_id;
     }
 
-    public function getUserId()
+    public function getUser_id()
     {
-        return $this->userId;
+        return $this->user_id;
     }
 
-    public function getVote()
+    public function getLikes()
     {
-        return $this->vote;
+        return $this->likes;
     }
 
     public function createComment()

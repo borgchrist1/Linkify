@@ -17,6 +17,13 @@ class Query
         return $query;
     }
 
+    public function getObjectByPostId ($id, $table, $class)
+    {
+        $query = $this->db->getObjects("SELECT * FROM {$table}
+            WHERE post_id = {$id}", $class);
+        return $query;
+    }
+
     public function getObjects ($table, $class)
     {
         $query = $this->db->getObjects("SELECT * FROM {$table}", $class);

@@ -3,16 +3,10 @@
 class Post {
     private $head;
     private $post;
-    private $author;
+    private $user_id;
     private $date;
+    private $vote;
 
-//    function  __construct($head = null, $post = null, $author = null, $date = null)
-//    {
-//       if ($head !== null) $this->head = $head;
-//       if ($post !== null) $this->post = $post;
-//       if ($author !== null) $this->author = $author;
-//       if ($date !== null)$this->date = $date;
-//    }
 
 
     public function getHead()
@@ -25,14 +19,19 @@ class Post {
         return $this->post;
     }
 
-    public function getAuthor()
+    public function getUser_id()
     {
-        return $this->author;
+        return $this->user_id;
     }
 
     public function getDate()
     {
         return $this->date;
+    }
+
+    public function getVote()
+    {
+        return $this->vote;
     }
 
 //    Public function createNewPost()
@@ -63,12 +62,12 @@ class Post {
         $db = new Database();
         $query = $db->getObjects("SELECT * FROM posts
             WHERE id ='".$id."'", "Post");
-            return $query;
+        return $query;
     }
 
     public function object($arr)
     {
-       return new self($arr);
+        return new self($arr);
     }
 
 }

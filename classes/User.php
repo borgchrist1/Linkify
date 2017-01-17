@@ -1,35 +1,45 @@
 <?php
 class User
 {
+    private $id;
     private $name;
     private $email;
     private $username;
     private $password;
     private $avatar;
 
-    public function __construct($name = null, $email = null, $username = null, $password = null, $avatar = null)
-    {
-        if ($name !== null) $this->name = $name;
-        if ($email !== null) $this->email = $email;
-        if ($username !== null) $this->username = $username;
-        if ($password !== null) $this->password = $password;
-        if ($avatar !== null) $this->avatar = $avatar;
-    }
+//    public function __construct($name = null, $email = null, $username = null, $password = null, $avatar = null)
+//    {
+//        if ($name !== null) $this->name = $name;
+//        if ($email !== null) $this->email = $email;
+//        if ($username !== null) $this->username = $username;
+//        if ($password !== null) $this->password = $password;
+//        if ($avatar !== null) $this->avatar = $avatar;
+//    }
 
+    public function getId()
+    {
+        return  $this->id;
+    }
 
     public function getName()
     {
         return $this->name;
     }
 
-    public function setEmail($email)
+    public function getEmail()
     {
-        $this->email = $email;
+      return  $this->email;
     }
 
     public function getUsername()
     {
         return $this->username;
+    }
+
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 
     public function getUserObject($id)

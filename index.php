@@ -2,8 +2,10 @@
 session_start();
 require "classes/Post.php";
 require "classes/Database.php";
+require "classes/User.php";
 $postObjects = new Post();
 $posts = $postObjects->getPosts();
+
 ?>
 <html>
     <head>
@@ -47,7 +49,12 @@ $posts = $postObjects->getPosts();
                 <a href="register.php">Register</a>
                 <?php endif; ?>
           <div class="message"><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></div>
-                <?php foreach ($posts as $post): ?>
+                <?php foreach ($posts as $post):
+                    print_r($post);
+
+                    $getUser = new User();
+                    $user = $getUser->getUserObject($post->getUser_id());
+                    print_r($user);?>
                         <!--<a href="topick.php?id=<?php print $post->id; ?>"><?php print $post->getHead(); ?></a><br>-->
                     <div class="post-wrapper">
                         <div class="post-head">

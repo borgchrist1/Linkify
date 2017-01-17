@@ -8,10 +8,11 @@ session_start();
         <title>Register</title>
     </head>
     <body>
-        <form id="form-register" method="post" action="resources/lib/register.php">
+        <form id="form-register" method="post" action="resources/lib/comments.php">
             Email:<input type="email" name="email">
             Password:<input type="password" name="password">
             Re-Password:<input type="password" name="rePassword">
+                        <input type="hidden" name="table" value="users">
             <input type="submit" value="Register">
         </form>
         <?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?>

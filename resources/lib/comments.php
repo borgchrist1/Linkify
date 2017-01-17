@@ -12,14 +12,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $table = $arr["table"];
     unset($arr["table"]);
     $validateForms = new Forms();
-    print_r($arr);
+    //print_r($arr);
     $result = $validateForms->checkForms($arr);
-    print_r($result);
-    die();
+    //print_r($result);
     $rows = Query::createRowString($result);
     $values = Query::createValueString($result);
     $query = new Query();
     $result = $query->insertData($rows, $values, $table);
+    if (!is_array($result)){
+        $_SESSION["message"] = $result;
+        header("Location: /");
+    }
+
+    //print $rows . "<br>" . $values;
+    $_SESSION["message"] = "Phu.. All went well";
+    header("Location: /");
 }
 
 //header("Location: /");

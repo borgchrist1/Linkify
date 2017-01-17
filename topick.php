@@ -9,7 +9,8 @@ $postId = $_GET["id"];
 $objects = new Query();
 $posts = $objects->getObjectById($postId, "posts", "Post");
 $comments = $objects->getObjectByPostId($postId, "comments", "Comment");
-print_r($posts);
+$previous = $_SERVER["REQUEST_URI"];
+
 ?>
 
 <html>
@@ -25,9 +26,11 @@ print_r($posts);
             <a href="edit-post.php?id=<?php print $postId; ?>">edit</a>
                 <?php endif; ?>
                 <?php print $post->getHead();
-                print $post->getPost();
+                print $post->getPost(); ?>
+            <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=1&table=posts&class=Post">Up Vote</a>
+            <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post">Down Vote</a>
                 //print $post->getAuthor();
-            endforeach;
+            <?php endforeach; ?>
             ?>
         </div>
         <div>
@@ -45,6 +48,7 @@ print_r($posts);
         <input type="hidden" name="post_id" value="<?php print $postId; ?>">
         <input type="hidden" name="user_id" value="<?php print $_SESSION["id"]; ?>">
         <input type="hidden" name="table" value="comments">
+        <input type="hidden" name="previous" value="<?php print $previous; ?>">
     </form>
     </body>
 </html>

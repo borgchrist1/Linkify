@@ -6,7 +6,7 @@ class Post {
     private $post;
     private $user_id;
     private $date;
-    private $vote;
+    private $votes;
 
 
     public function getId()
@@ -34,9 +34,9 @@ class Post {
         return $this->date;
     }
 
-    public function getVote()
+    public function getVotes()
     {
-        return $this->vote;
+        return $this->votes;
     }
 
 //    Public function createNewPost()

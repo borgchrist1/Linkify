@@ -50,6 +50,15 @@ class Query
             WHERE id='".$id."'");
     }
 
+    public function insertVoteToPost ($id, $votes, $table)
+    {
+        $db = new Database();
+        $query = $db->query("UPDATE {$table}
+            SET votes='".$votes."'
+            WHERE id='".$id."'");
+        return $query;
+    }
+
     public static function createRowString($arr)
     {
         $row = null;

@@ -6,19 +6,30 @@ require "../../classes/Forms.php";
 require "../../classes/Query.php";
 $_SESSION["message"] = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
+
     $_SESSION["message"] = "";
-    //$newUser = new Query();
+    $newUser = new Query();
     $arr = $_POST;
     $table = $arr["table"];
+    print $arr["previous"];
+
+    if($arr["previous"]){
+
+        $previous = $arr["previous"];
+        unset($arr["previous"]);
+    }
+
     unset($arr["table"]);
+
     $validateForms = new Forms();
-    //print_r($arr);
     $result = $validateForms->checkForms($arr);
-    //print_r($result);
+
     $rows = Query::createRowString($result);
     $values = Query::createValueString($result);
+
     $query = new Query();
     $result = $query->insertData($rows, $values, $table);
+
     if (!is_array($result)){
         $_SESSION["message"] = $result;
         header("Location: /");
@@ -26,6 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
     //print $rows . "<br>" . $values;
     $_SESSION["message"] = "Alright.. All went well";
+
+    if($previous !== null){
+        header("Location: ../../{$previous}");
+    }
     header("Location: /");
 }
 

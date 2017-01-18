@@ -1,7 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: chris
- * Date: 18-Jan-17
- * Time: 00:46
- */
+<div class="big-header">
+    <h1>Linkify</h1>
+</div>

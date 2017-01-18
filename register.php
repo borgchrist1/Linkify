@@ -3,18 +3,23 @@ session_start();
 ?>
 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Register</title>
-    </head>
+    <?php require "resources/blocks/head.php"; ?>
     <body>
-        <form id="form-register" method="post" action="resources/lib/comments.php">
-            Email:<input type="email" name="email">
-            Password:<input type="password" name="password">
-            Re-Password:<input type="password" name="rePassword">
-                        <input type="hidden" name="table" value="users">
-            <input type="submit" value="Register">
-        </form>
+        <?php require "resources/blocks/big-header.php";
+        require "resources/blocks/header.php";
+        require "resources/blocks/left-panel.php";
+        ?>
+        <div class="post-wrapper">
+            <form id="form-register" method="post" action="resources/lib/comments.php">
+                Email:<input type="email" name="email">
+                Password:<input type="password" name="password">
+                Re-Password:<input type="password" name="rePassword">
+                            <input type="hidden" name="table" value="users">
+                <input type="submit" value="Register">
+            </form>
+        </div>
         <?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?>
+        <script type="text/javascript" src="resources/js/main.js">
+        </script>
     </body>
 </html>

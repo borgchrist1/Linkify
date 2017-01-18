@@ -10,32 +10,33 @@ if($_GET["id"]){
     $posts = $getPost->getObjectById($_GET["id"], "posts", "Post");
     foreach ($posts as $post){
         $editPost = $post;
-        print_r($editPost);
     }
 
 }
 ?>
 
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Register</title>
-</head>
-<body>
+    <?php require "resources/blocks/head.php"; ?>
+    <body>
+        <?php require "resources/blocks/big-header.php";
+        require "resources/blocks/header.php";
+        require "resources/blocks/left-panel.php";
+        ?>
+        <div class="page-wrapper">
+            <form id="form-post" method="post" action="resources/lib/edit-post.php">
+                Head:<input type="text" name="head" value="<?php if (!empty($_GET["id"])): print $editPost->getHead(); ?>">
+                <textarea name="post"><?php if (!empty($_GET["id"])) print $editPost->getPost();
+                    endif; ?>
+                    </textarea>
+                <input type="hidden" name="post_id" value="<?php print $_GET["id"]; ?>">
+                <input type="hidden" name="datum" value="20170117">
+                <input type="hidden" name="table" value="posts">
+                <button type="submit" form="form-post">Post</button>
+            </form>
+        </div>
 
-<form id="form-post" method="post" action="resources/lib/edit-post.php">
-    Head:<input type="text" name="head" value="<?php if (!empty($_GET["id"])): print $editPost->getHead(); ?>">
-    <textarea name="post"><?php if (!empty($_GET["id"])) print $editPost->getPost();
-        endif; ?>
-        </textarea>
-    <input type="hidden" name="post_id" value="<?php print $_GET["id"]; ?>">
-    <input type="hidden" name="datum" value="20170117">
-    <input type="hidden" name="table" value="posts">
-    <button type="submit" form="form-post">Post</button>
-</form>
-
-
-<p><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
-
-</body>
+    <p><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
+        <script type="text/javascript" src="resources/js/main.js">
+        </script>
+    </body>
 </html>

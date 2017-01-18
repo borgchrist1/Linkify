@@ -15,6 +15,7 @@ require "classes/Query.php";
         require "resources/blocks/left-panel.php";
         ?>
         <div class="page-wrapper">
+
             <form id="form-post" method="post" action="resources/lib/comments.php">
                 Head:<input type="text" name="head" >
                 <textarea name="post">

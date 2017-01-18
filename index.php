@@ -7,6 +7,7 @@ require "classes/Query.php";
 require "resources/lib/index-get-user.php";
 $postObjects = new Query();
 $posts = $postObjects->getObjects("posts", "Post");
+
 ?>
 <html>
     <?php require "resources/blocks/head.php"; ?>

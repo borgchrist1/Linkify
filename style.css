@@ -63,9 +63,10 @@ span{
 
  .page-wrapper {
   /*height: 100%;*/
-  width: 100%;
+  width: 95%;
   /*margin-bottom: 70px;*/
   float: right;
+
 overflow: hidden;
 }
 
@@ -79,15 +80,17 @@ overflow: hidden;
   margin-bottom: 10%;
 }
 
+
+
 .post-head{
   padding: 1%;
   border-bottom: 2px solid #c60060;
 }
 
 .post-avatar{
-  height: 200px;
-  width: 140px;
-  border: 1px solid black;
+  height: auto;
+  /*width: 140px;*/
+  /*border: 1px solid black;*/
   padding: 2%;
   float: left;
   display: flex;
@@ -150,6 +153,37 @@ overflow: hidden;
   display: none;
 }
 
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.avatar-wrapper{
+  /*margin: 10px;*/
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.avatar {
+  border: 1px solid black;
+  width: 200px;
+  height: 225px;
+}
+
+.avatar img{
+  max-width: 200px;
+  max-height: 225px;
+}
+
+.form-wrapper{
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*flex-direction: column;*/
+}
+
 /*.closed.page-wrapper{
   -webkit-transform: translateX(25%) !important;
 -moz-transform: translateX(25%) !important;
@@ -162,6 +196,12 @@ transform: translateX(25%) !important;
 -ms-transform: translate3d(25%, 0, 0) !important;
 transform: translate3d(25%, 0, 0) !important;
 }*/
+.right-side{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 footer{
   height: 70px;

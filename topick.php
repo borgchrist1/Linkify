@@ -33,6 +33,7 @@ $previous = $_SERVER["REQUEST_URI"];
                     <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post">Down Vote</a>
                 <?php endforeach; ?>
             </div>
+
             <div>
                 <?php
                 foreach ($comments as $comment):

@@ -36,18 +36,18 @@ class Query
         $query = $db->query("UPDATE posts
             SET head='".$head."',
             post='".$post."'
-            WHERE id='".$id."'");
+            WHERE id={$id}");
         return $query;
     }
 
-    public function insertChangesToUser ($id, $name, $email, $username)
+    public function insertChangesToUser ($id, $email, $username)
     {
         $db = new Database();
         $query = $db->query("UPDATE users
-            SET name='".$name."'
+            SET username='".$username."',
             SET email='".$email."'
-            SET username='".$username."'
-            WHERE id='".$id."'");
+            WHERE id={$id}");
+        return $query;
     }
 
     public function insertVoteToPost ($id, $votes, $table)

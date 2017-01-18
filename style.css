@@ -78,6 +78,7 @@ overflow: hidden;
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 10%;
+  min-height: 250px;
 }
 
 
@@ -100,6 +101,7 @@ overflow: hidden;
 
 .post-content{
   padding: 2%;
+  float: left;
 
 }
 
@@ -200,6 +202,14 @@ transform: translate3d(25%, 0, 0) !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.likes{
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 

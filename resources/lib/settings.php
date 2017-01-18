@@ -1,5 +1,7 @@
 <?php
 session_start();
+//require "../../classes/Database.php";
+require "../../classes/Query.php";
 require "../../classes/Forms.php";
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $validateForm = new Forms();
@@ -29,14 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
             unset($arr["email"]);
         }
 
-        unset($arr["oldEmail"]);
+
         $posts = $validateForm->checkForms($arr);
+        $query = new Query();
 
-        print_r($posts);
-        die();
-        //$user->insertChanges($_SESSION["id"], $name, $username, $email);
+        $posts["email"] = $arr["oldEmail"];
+        $inertUpdate = $query->insertChangesToUser((int)$_SESSION["id"], $posts["email"], $posts["username"]);
 
 
+        header("location: ../../settings.php");
 
 
     }

@@ -3,6 +3,7 @@
 class Post {
     private $id;
     private $head;
+    private $url;
     private $post;
     private $user_id;
     private $date;
@@ -17,6 +18,14 @@ class Post {
     public function getHead()
     {
         return $this->head;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 
     public function getPost()

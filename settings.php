@@ -47,7 +47,7 @@ foreach ($users as $key){
                     <h2>Change password</h2>
                     <form id="change-password" method="post" action="resources/lib/settings.php">
                         Old password:<input type="password" name="oldPassword"><br>
-                        New password:<input type="password" name="newPassword"><br>
+                        New password:<input type="password" name="password"><br>
                         Re-New password:<input type="password" name="rePassword"><br>
                         <input type="submit" value="save">
                     </form>

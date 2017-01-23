@@ -36,7 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         $query = new Query();
 
         $posts["email"] = $arr["oldEmail"];
-        $inertUpdate = $query->insertChangesToUser((int)$_SESSION["id"], $posts["email"], $posts["username"]);
+        if (!empty($posts["avatar"])){
+            $insertAvatar = $query->insertAvatar($posts["avatar"], $_SESSION["id"]);
+        }
+        $insertUpdate = $query->insertChangesToUser((int)$_SESSION["id"], $posts["email"], $posts["username"]);
 
 
         header("location: ../../settings.php");
@@ -45,6 +48,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     }
 
     if (!empty($_POST["oldPassword"])){
+        $arr = $_POST;
 
+        If ($arr["password"] === $arr["rePassword"] && $arr["password"] !== $arr["oldPassword"]) {
+
+
+            $validateForm = new Forms();
+            $validateData = $validateForm->checkForms($arr);
+            $query = new Query();
+            $changePassword = $query->changePassword($validateData["password"], $_SESSION["id"]);
+            header("location: ../../settings.php");
+        }
+        header("location: ../../settings.php");
+        $_SESSION["message"] = "wrong";
     }
 }

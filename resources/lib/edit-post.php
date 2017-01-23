@@ -10,6 +10,6 @@ $validateForm = new Forms();
 $validatedData = $validateForm->checkForms($arr);
 $insertData = new Query();
 print_r($validatedData);
-$insertData->insertChangesToPost($validatedData["post_id"], $validatedData["head"], $validatedData["post"]);
+$insertData->insertChangesToPost($validatedData["post_id"], $validatedData["head"], $validatedData["url"], $validatedData["post"]);
 header("Location: /");
 

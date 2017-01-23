@@ -21,27 +21,50 @@ $previous = $_SERVER["REQUEST_URI"];
         require "resources/blocks/left-panel.php";
         ?>
         <div class="page-wrapper">
-            <div>
-                <?php
-                foreach ($posts as $post):
-                    if($_SESSION["id"] === $post->getUser_id()):?>
-                        <a href="edit-post.php?id=<?php print $postId; ?>">edit</a>
-                    <?php endif; ?>
-                    <?php print $post->getHead();
-                    print $post->getPost(); ?>
-                    <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=1&table=posts&class=Post">Up Vote</a>
-                    <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post">Down Vote</a>
-                <?php endforeach; ?>
-            </div>
+            <?php foreach ($posts as $post):?>
+                <div class="post-wrapper">
+                    <div class="post-head">
+                        <h2><?php print $post->getHead();?></h2>
+                    </div>
+                    <div>
+                        <div class="post-avatar">
 
-            <div>
-                <?php
-                foreach ($comments as $comment):
-                    print $comment->getComment();
-                    $user = $comment->getUser_id();
-                endforeach;
-                ?>
-            </div>
+                        </div>
+                        <div class="post-content">
+                            <p><?php print $post->getPost(); ?></p>
+                        </div>
+                        <div class="likes">
+                            <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=1&table=posts&class=Post">Up Vote</a>
+                            <p><?php if($post->getVotes() !== null) print $post->getVotes(); ?></p>
+                            <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post">Down Vote</a>
+                        </div>
+                        <div class="edit">
+                        <?php if($_SESSION["id"] === $post->getUser_id()):?>
+                            <a href="edit-post.php?id=<?php print $postId; ?>">edit</a>
+                            <a href="resources/lib/delete-post.php?id=<?php print $postId; ?>">Delete</a>
+                        <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <?php
+            foreach ($comments as $comment):?>
+                <div class="post-wrapper">
+                    <div>
+                        <div class="post-avatar">
+
+                        </div>
+                        <div class="post-content">
+                            <p><?php print $comment->getComment(); ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+
+
+
+
 
             <form id="comment-form" method="post" action="resources/lib/comments.php">
                 <textarea name="comment"></textarea>

@@ -24,10 +24,10 @@ if($_GET["id"]){
         ?>
         <div class="page-wrapper">
             <form id="form-post" method="post" action="resources/lib/edit-post.php">
-                Head:<input type="text" name="head" value="<?php if (!empty($_GET["id"])): print $editPost->getHead(); ?>">
-                <textarea name="post"><?php if (!empty($_GET["id"])) print $editPost->getPost();
-                    endif; ?>
-                    </textarea>
+                Head:<input type="text" name="head" value="<?php if (!empty($_GET["id"])): print $editPost->getHead(); endif; ?>">
+                Url:<input type="text" name="url" value="<?php if (!empty($_GET["id"])): print $editPost->getUrl(); ?>">
+                <textarea name="post"><?php if (!empty($_GET["id"])) print $editPost->getPost(); ?></textarea>
+                    <?php endif; ?>
                 <input type="hidden" name="post_id" value="<?php print $_GET["id"]; ?>">
                 <input type="hidden" name="datum" value="20170117">
                 <input type="hidden" name="table" value="posts">

@@ -29,25 +29,27 @@ $posts = $postObjects->getObjects("posts", "Post");
             <div class="message"><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></div>
             <?php foreach ($posts as $post):
                 $user = getAuthor($post->getUser_id());?>
+<!--topick.php?id=<?php print $post->getId(); ?>-->
 
-
-                <div class="post-wrapper">
+            <div class="post-wrapper">
                     <div class="post-head">
-                        <h2><a href="topick.php?id=<?php print $post->getId(); ?>"><?php print $post->getHead(); ?></a></h2>
+                        <h2><a href="<?php print $post->getUrl(); ?>"><?php print $post->getHead(); ?></a></h2>
                     </div>
-                    <div>
+                   <div class="content-wrapper">
                     <div class="post-avatar">
                         <img src="resources/img/users/<?php print $user->getId() . "/" . $user->getAvatar(); ?>" height="100">
+                        <p><?php print $user->getUsername(); ?></p>
                     </div>
                     <div class="post-content">
                         <p><?php print $post->getPost(); ?></p>
                     </div>
                     <div class="likes">
                         <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=1&table=posts&class=Post">Up Vote</a>
-                        <p><?php if($post->getVotes() !== null) print $post->getVotes(); ?></p>
+                        <p><?php if($post->getVotes() !== null) print $post->getVotes(); else print 0; ?></p>
                         <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post">Down Vote</a>
                     </div>
                 </div>
+                <div class="more"><a href="topick.php?id=<?php print $post->getId(); ?>">Comment</a></div>
                 </div>
             <?php endforeach; ?>
         </div>

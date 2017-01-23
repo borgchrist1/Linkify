@@ -63,10 +63,10 @@ span{
 
  .page-wrapper {
   /*height: 100%;*/
-  width: 95%;
+  /*width: 95%;*/
   /*margin-bottom: 70px;*/
-  float: right;
-
+  /*float: right;*/
+margin-left: 70px;
 overflow: hidden;
 }
 
@@ -78,13 +78,22 @@ overflow: hidden;
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 10%;
-  min-height: 250px;
+  /*min-height: 250px;*/
 }
 
 
 
 .post-head{
   padding: 1%;
+  border-bottom: 2px solid #c60060;
+
+}
+
+.content-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
   border-bottom: 2px solid #c60060;
 }
 
@@ -93,16 +102,24 @@ overflow: hidden;
   /*width: 140px;*/
   /*border: 1px solid black;*/
   padding: 2%;
-  float: left;
+  /*float: left;*/
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .post-content{
   padding: 2%;
-  float: left;
+  /*float: left;*/
 
+}
+
+.more{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
 .left-panel {
@@ -206,7 +223,8 @@ transform: translate3d(25%, 0, 0) !important;
 }
 
 .likes{
-  float: right;
+  /*float: right;*/
+  padding: 2%;
   display: flex;
   align-items: center;
   justify-content: center;

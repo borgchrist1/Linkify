@@ -30,11 +30,12 @@ class Query
         return $query;
     }
 
-    public function insertChangesToPost ($id, $head, $post)
+    public function insertChangesToPost ($id, $head, $url, $post)
     {
-        $db = new Database();
-        $query = $db->query("UPDATE posts
+
+        $query = $this->db->query("UPDATE posts
             SET head='".$head."',
+            url='".$url."',
             post='".$post."'
             WHERE id={$id}");
         return $query;
@@ -42,20 +43,43 @@ class Query
 
     public function insertChangesToUser ($id, $email, $username)
     {
-        $db = new Database();
-        $query = $db->query("UPDATE users
+
+        $query = $this->db->query("UPDATE users
             SET username='".$username."',
-            SET email='".$email."'
+            email='".$email."'
+            WHERE id={$id}");
+        return $query;
+    }
+
+    public function insertAvatar ($avatar, $id)
+    {
+        $query = $this->db->query("UPDATE users
+            SET avatar='".$avatar."'
+            WHERE id={$id}");
+        return $query;
+    }
+
+    public function changePassword($password, $id)
+    {
+        $query = $this->db->query("UPDATE users
+            SET password='".$password."'
             WHERE id={$id}");
         return $query;
     }
 
     public function insertVoteToPost ($id, $votes, $table)
     {
-        $db = new Database();
-        $query = $db->query("UPDATE {$table}
+
+        $query = $this->db->query("UPDATE {$table}
             SET votes='".$votes."'
             WHERE id='".$id."'");
+        return $query;
+    }
+
+    public function deletePost($id)
+    {
+        $query = $this->db->query("DELETE FROM posts
+WHERE id = '" . $id."'");
         return $query;
     }
 

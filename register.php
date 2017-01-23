@@ -9,12 +9,12 @@ session_start();
         require "resources/blocks/header.php";
         require "resources/blocks/left-panel.php";
         ?>
-        <div class="post-wrapper">
-            <form id="form-register" method="post" action="resources/lib/comments.php">
-                Email:<input type="email" name="email">
-                Password:<input type="password" name="password">
-                Re-Password:<input type="password" name="rePassword">
-                            <input type="hidden" name="table" value="users">
+        <div class="form-wrapper">
+            <form id="form-register" method="post" action="resources/lib/comments.php"><br>
+                Email:<input type="email" name="email"><br>
+                Password:<input type="password" name="password"><br>
+                Re-Password:<input type="password" name="rePassword"><br>
+                            <input type="hidden" name="table" value="users"><br>
                 <input type="submit" value="Register">
             </form>
         </div>

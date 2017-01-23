@@ -18,6 +18,7 @@ require "classes/Query.php";
 
             <form id="form-post" method="post" action="resources/lib/comments.php">
                 Head:<input type="text" name="head" >
+                Url:<input type="text" name="url" placeholder="http://www.exempel.com/" >
                 <textarea name="post">
                 </textarea>
                 <input type="hidden" name="user_id" value="<?php print $_SESSION["id"]; ?>">

@@ -2,8 +2,9 @@
 
 class Database
 {
-    private $host = "127.0.0.1";
+    private $host = "localhost";
     private $dbName = "linkify";
+    private $port = 3306;
     private $username = "root";
     private $password = "root";
     private $socetType = "mysql";
@@ -14,8 +15,8 @@ class Database
     {
         if ($this->instance == NULL) {
             try {
-                $db = new PDO (''.$this->socetType .':host='. $this->host .';dbname='. $this->dbName .'', $this->username, $this->password );
-
+                $db = new PDO (''.$this->socetType .':host='. $this->host . ';port='. $this->port .';dbname='. $this->dbName .';', $this->username, $this->password );
+                //$db = new PDO("mysql:host=localhost;port=3306;dbname=contacts;charset=utf8", "root", "root");
                 $this->instance = $db;
             } catch (Exception $e) {
                 die($e->getMessage());            }

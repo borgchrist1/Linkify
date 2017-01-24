@@ -9,7 +9,7 @@ And the design is not done.
    ```bash
    $ git clone https://github.com/borgchrist1/linkify.git
    ```
-3. Import the linkify.sql file into MySQL, either through the command line or through something like PHPMyAdmin.
+3. Import the linkify.sql file into MySQL.
     ```bash
     $ mysql -u root -p linkify < linkify.sql
     ```   

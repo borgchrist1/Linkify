@@ -4,7 +4,9 @@ session_start();
 require "classes/Post.php";
 require "classes/Database.php";
 require "classes/Comment.php";
+require "classes/User.php";
 require "classes/Query.php";
+require "resources/lib/index-get-user.php";
 $postId = $_GET["id"];
 $objects = new Query();
 $posts = $objects->getObjectById($postId, "posts", "Post");
@@ -21,38 +23,43 @@ $previous = $_SERVER["REQUEST_URI"];
         require "resources/blocks/left-panel.php";
         ?>
         <div class="page-wrapper">
-            <?php foreach ($posts as $post):?>
+            <?php foreach ($posts as $post):
+                $user = getAuthor($post->getUser_id()); ?>
+
                 <div class="post-wrapper">
                     <div class="post-head">
                         <h2><?php print $post->getHead();?></h2>
                     </div>
-                    <div>
+                    <div class="content-wrapper">
                         <div class="post-avatar">
-
+                            <img src="resources/img/users/<?php print $user->getId() . "/" . $user->getAvatar(); ?>" height="100">
+                            <p><?php print $user->getUsername(); ?></p>
                         </div>
                         <div class="post-content">
                             <p><?php print $post->getPost(); ?></p>
                         </div>
                         <div class="likes">
                             <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=1&table=posts&class=Post">Up Vote</a>
-                            <p><?php if($post->getVotes() !== null) print $post->getVotes(); ?></p>
+                            <p><?php if($post->getVotes() !== null) print $post->getVotes(); else print 0; ?></p>
                             <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post">Down Vote</a>
                         </div>
-                        <div class="edit">
+                    </div>
+                    <div class="more">
                         <?php if($_SESSION["id"] === $post->getUser_id()):?>
-                            <a href="edit-post.php?id=<?php print $postId; ?>">edit</a>
+                            <a href="edit-post.php?id=<?php print $postId; ?>">Edit</a>
                             <a href="resources/lib/delete-post.php?id=<?php print $postId; ?>">Delete</a>
                         <?php endif; ?>
-                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>
             <?php
-            foreach ($comments as $comment):?>
-                <div class="post-wrapper">
-                    <div>
+            foreach ($comments as $comment):
+                $user = getAuthor($comment->getUser_id());  ?>
+                <div class="comment-wrapper">
+                    <div class="comment-wrapper-inner">
                         <div class="post-avatar">
-
+                            <img src="resources/img/users/<?php print $user->getId() . "/" . $user->getAvatar(); ?>" height="100">
+                            <p><?php print $user->getUsername(); ?></p>
                         </div>
                         <div class="post-content">
                             <p><?php print $comment->getComment(); ?></p>

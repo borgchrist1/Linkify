@@ -12,6 +12,7 @@ session_start();
         <div class="form-wrapper">
             <form id="form-register" method="post" action="resources/lib/comments.php"><br>
                 Email:<input type="email" name="email"><br>
+                Username:<input type="text" name="username"><br>
                 Password:<input type="password" name="password"><br>
                 Re-Password:<input type="password" name="rePassword"><br>
                             <input type="hidden" name="table" value="users"><br>

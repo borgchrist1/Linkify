@@ -29,7 +29,7 @@ foreach ($users as $key){
             </div>
 
             <div class="right-side">
-
+                <?php print $_SESSION["message"]; ?>
                 <div class="form-wrapper">
                     <h2>Edit info</h2>
 

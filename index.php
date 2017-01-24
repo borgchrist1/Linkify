@@ -28,12 +28,10 @@ $posts = $postObjects->getObjects("posts", "Post");
             <?php endif; ?>
             <div class="message"><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></div>
             <?php foreach ($posts as $post):
-                $user = getAuthor($post->getUser_id());?>
-<!--topick.php?id=<?php print $post->getId(); ?>-->
-
+                $user = getAuthor($post->getUser_id()); ?>
             <div class="post-wrapper">
                     <div class="post-head">
-                        <h2><a href="<?php print $post->getUrl(); ?>"><?php print $post->getHead(); ?></a></h2>
+                        <h2><a href="<?php if(!empty($post->getUrl())) print $post->getUrl(); else print "#"; ?>"><?php print $post->getHead(); ?></a></h2>
                     </div>
                    <div class="content-wrapper">
                     <div class="post-avatar">

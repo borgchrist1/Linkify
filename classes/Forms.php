@@ -33,22 +33,50 @@ class Forms
     public function checkForms($arr)
     {
        foreach ($arr as $key => $value){
+           if($key === ""){
+               return "All fields must be filed";
+           }
+
            if ($key !== "password") {
                trim(stripcslashes($value));
 
            }
            if ($key === "email"){
                if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                   return false;
+                   return "Your email is't correctly typed";
                    break;
                }
+                $email = $this->getEmailById($arr["id"]);
+               foreach ($email as $item){
+                   if ($item["email"] !== $value){
 
-               $uniqeEmail = $this->uniqueEmail($value);
-               if ($uniqeEmail === 0){
-                   return "email finns redan";
-                   break;
+                       $uniqeEmail = $this->uniqueEmail($value);
+                       if ($uniqeEmail === false){
+
+                           return "Email already exists";
+
+                           break;
+                       }
+                   }
                }
 
+
+           }
+
+           if ($key === "username") {
+               $username = $this->getUsernameById($arr["id"]);
+               foreach ($username as $item) {
+                   if ($item["username"] !== $value) {
+
+                       $uniqueUsername = $this->uniqueUsername($value);
+                       if ($uniqueUsername === false) {
+                           return "Username already exists";
+                           break;
+                       }
+
+                   }
+
+               }
            }
 
            if ($key === "password" || $key === "rePassword"){
@@ -65,7 +93,7 @@ class Forms
                    break;
                }
 
-               unset($arr['rePassword']);
+               unset($arr["rePassword"]);
            }
 
        }
@@ -83,6 +111,38 @@ class Forms
             return false;
         }
         return true;
+    }
+
+    Public function uniqueUsername ($username){
+        $db = new Database();
+
+        $query = $db->query("SELECT * FROM users
+            WHERE username='".$username."'");
+        if (count($query) > 0){
+            print "false";
+            return false;
+        }
+        return true;
+    }
+
+    public function getUsernameById($id)
+    {
+        $db = new Database();
+
+        $query = $db->query("SELECT username FROM users
+        WHERE id='".$id."'");
+
+        return $query;
+    }
+
+    public function getEmailById($id)
+    {
+        $db = new Database();
+
+        $query = $db->query("SELECT email FROM users
+        WHERE id='".$id."'");
+
+        return $query;
     }
 
 }

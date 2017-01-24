@@ -83,6 +83,18 @@ WHERE id = '" . $id."'");
         return $query;
     }
 
+    public function correctPassword($password, $id)
+    {
+        $query = $this->db->query("SELECT * FROM users
+    WHERE password='".$password."' AND id='".$id."'");
+       return $query;
+    }
+
+    public  function encryptPassword ($password)
+    {
+        return md5($password);
+    }
+
     public static function createRowString($arr)
     {
         $row = null;

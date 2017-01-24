@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
             if (!is_array($posts)) {
                 $_SESSION["message"] = $posts;
-                print $posts;
+                // print $posts;
                 header("Location: ../../settings.php");
             } else {
 

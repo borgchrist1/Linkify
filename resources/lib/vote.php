@@ -1,11 +1,11 @@
 <?php
-require "../../classes/Database.php";
-require "../../classes/Query.php";
-require "../../classes/Post.php";
+ require "../../classes/Database.php";
+ require "../../classes/Query.php";
+ require "../../classes/Post.php";
 
 $vote = $_GET;
-print "<pre>";
-print_r($vote);
+// print "<pre>";
+// print_r($vote);
 $postVote = null;
 $query = new Query();
 $post = $query->getObjectById($vote["id"], $vote["table"], $vote["class"]);
@@ -20,11 +20,7 @@ $insert = $query->insertVoteToPost($vote["id"], $newScore, $vote["table"]);
 
 if (!is_array($insert)){
     $_SESSION["message"] = $insert;
-    header("Location: /");
+    header("Location: ../../index.php");
 }
 $_SESSION["message"] = "Alright.. All went well";
-header("Location: /");
-
-
-
-
+header("Location: ../../index.php");

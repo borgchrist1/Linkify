@@ -15,7 +15,7 @@ foreach ($users as $key){
     <?php require "resources/blocks/head.php"; ?>
 
     <body>
-        <?php require "resources/blocks/big-header.php";
+        <?php //require "resources/blocks/big-header.php";
         require "resources/blocks/header.php";
         require "resources/blocks/left-panel.php";
         ?>

@@ -5,7 +5,7 @@ session_start();
 <html>
     <?php require "resources/blocks/head.php"; ?>
     <body>
-        <?php require "resources/blocks/big-header.php";
+        <?php //require "resources/blocks/big-header.php";
         require "resources/blocks/header.php";
         require "resources/blocks/left-panel.php";
         ?>
@@ -15,6 +15,7 @@ session_start();
                 Username:<input type="text" name="username"><br>
                 Password:<input type="password" name="password"><br>
                 Re-Password:<input type="password" name="rePassword"><br>
+                            <input type="hidden" name="id" value="">
                             <input type="hidden" name="table" value="users"><br>
                 <input type="submit" value="Register">
             </form>

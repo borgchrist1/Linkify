@@ -46,6 +46,7 @@ class Forms
                    return "Your email is't correctly typed";
                    break;
                }
+               
                 $email = $this->getEmailById($arr["id"]);
                foreach ($email as $item){
                    if ($item["email"] !== $value){
@@ -82,7 +83,7 @@ class Forms
            if ($key === "password" || $key === "rePassword"){
                 $arr["password"] = $this->encryptPassword($value);
                //print "3d <br>" . $value;
-               print $arr["password"] . "<br>";
+              //  print $arr["password"] . "<br>";
 
            }
 
@@ -107,7 +108,6 @@ class Forms
         $query = $db->query("SELECT * FROM users
             WHERE email='".$email."'");
         if (count($query) > 0){
-            print "false";
             return false;
         }
         return true;
@@ -119,7 +119,6 @@ class Forms
         $query = $db->query("SELECT * FROM users
             WHERE username='".$username."'");
         if (count($query) > 0){
-            print "false";
             return false;
         }
         return true;

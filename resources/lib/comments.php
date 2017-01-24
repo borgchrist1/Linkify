@@ -11,13 +11,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $newUser = new Query();
     $arr = $_POST;
     $table = $arr["table"];
-    print $arr["previous"];
+    //print $arr["previous"];
 
-    if($arr["previous"]){
-
-        $previous = $arr["previous"];
-        unset($arr["previous"]);
-    }
+    // if($arr["previous"]){
+    //
+    //     $previous = $arr["previous"];
+    //     unset($arr["previous"]);
+    // }
 
     unset($arr["table"]);
 
@@ -38,10 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     //print $rows . "<br>" . $values;
     $_SESSION["message"] = "Alright.. All went well";
 
-    if($previous !== null){
-        header("Location: ../../{$previous}");
-    }
-    header("Location: /");
+    // if($previous !== null){
+    //     header("Location: ../../index.php");
+    // }
+    header("Location: ../../index.php");
 }
 
 //header("Location: /");

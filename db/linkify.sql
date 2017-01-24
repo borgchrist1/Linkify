@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Jan 18, 2017 at 09:17 AM
+-- Generation Time: Jan 24, 2017 at 03:54 PM
 -- Server version: 5.5.49-log
 -- PHP Version: 7.0.9
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `likes` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comments`
@@ -56,7 +56,9 @@ INSERT INTO `comments` (`id`, `comment`, `post_id`, `user_id`, `likes`) VALUES
 (15, 'feefefeg', 1, 1, 0),
 (16, 'ok like that', 20, 1, 0),
 (17, 'dgrdrh', 6, 1, 0),
-(18, 'fgjfgyj', 1, 1, 0);
+(18, 'fgjfgyj', 1, 1, 0),
+(19, 'ok', 19, 1, 0),
+(20, 'knknkknkn', 20, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -67,29 +69,28 @@ INSERT INTO `comments` (`id`, `comment`, `post_id`, `user_id`, `likes`) VALUES
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL,
   `head` varchar(200) NOT NULL,
+  `url` varchar(300) NOT NULL,
   `post` varchar(1000) NOT NULL,
   `user_id` int(11) NOT NULL,
   `datum` datetime NOT NULL,
   `votes` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `head`, `post`, `user_id`, `datum`, `votes`) VALUES
-(1, 'new header', 'This is my post                    ', 1, '2016-12-20 00:00:00', 6),
-(6, 'hello', 'post post', 1, '2016-12-20 00:00:00', -2),
-(7, 'hello', 'post post', 1, '2016-12-20 00:00:00', 2),
-(8, 'hejsan', 'ny post', 1, '2016-12-20 00:00:00', 2),
-(9, 'Guns n roses', 'Stockholm', 1, '2016-12-20 00:00:00', -3),
-(11, 'This is the first post from', 'I like my self if this works!!!', 1, '2017-01-16 00:00:00', 2),
-(17, 'motherfucker', 'Fuck you', 1, '2017-01-16 00:00:00', 1),
-(18, 'eogrijqwg', 'WEFYHBw;eogfn;WLNWJBF;efwefnenfenifief', 1, '2017-01-16 00:00:00', -2),
-(19, 'What is Lorem Ipsum?', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', 1, '2017-01-17 00:00:00', NULL),
-(20, 'Lets create a new post', 'Her is some content.', 1, '2017-01-17 00:00:00', NULL),
-(21, 'Design', '    oh this is boring            ', 1, '2017-01-17 00:00:00', NULL),
-(22, 'post', 'sothing                ', 1, '2017-01-17 00:00:00', NULL);
+INSERT INTO `posts` (`id`, `head`, `url`, `post`, `user_id`, `datum`, `votes`) VALUES
+(1, 'this is a header', '', 'This is my post                                                            ', 1, '2016-12-20 00:00:00', 6),
+(7, 'hello', '', 'post post', 1, '2016-12-20 00:00:00', 2),
+(8, 'hejsan', '', 'ny post', 1, '2016-12-20 00:00:00', 2),
+(9, 'Guns n roses', '', 'Stockholm', 1, '2016-12-20 00:00:00', -4),
+(11, 'This is the first post from', '', 'I like my self if this works!!!', 1, '2017-01-16 00:00:00', 2),
+(17, 'motherfucker', '', 'Fuck you', 1, '2017-01-16 00:00:00', 1),
+(18, 'eogrijqwg', '', 'WEFYHBw;eogfn;WLNWJBF;efwefnenfenifief', 1, '2017-01-16 00:00:00', -2),
+(19, 'What is Lorem Ipsum?', '', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', 1, '2017-01-17 00:00:00', NULL),
+(20, 'ny', 'http://www.lunarstorm.se', 'test         ', 1, '2017-01-17 00:00:00', NULL),
+(21, 'test', 'https://google.com/', 'dnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnnnnnnnnnnnnn\r\nnnnnnrhb                ', 1, '2017-01-17 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -103,18 +104,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(70) NOT NULL,
   `password` varchar(60) NOT NULL,
   `avatar` varchar(300) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `avatar`) VALUES
-(1, 'cb@gmail.com', '', '202cb962ac59075b964b07152d234b70', 'papers.co-ao09-space-galaxy-star-far-night-science-nature-blue-3840x2160 (1).jpg'),
+(1, 'cb@gmail.com', 'borgchrist1', 'caf1a3dfb505ffed0d024130f58c5cfa', 'profilepic.jpg'),
 (2, 'charlie@gmail.com', '', '202cb962ac59075b964b07152d234b70', ''),
 (4, 'jag_cicci@hotmail.com', '', '202cb962ac59075b964b07152d234b70', ''),
 (5, 'olle.j@gmail.com', '', '202cb962ac59075b964b07152d234b70', ''),
-(6, 'jan@gmail.com', '', '202cb962ac59075b964b07152d234b70', '');
+(6, 'jan@gmail.com', 'janne', '202cb962ac59075b964b07152d234b70', 'papers.co-ao09-space-galaxy-star-far-night-science-nature-blue-3840x2160 (1).jpg'),
+(7, 'kall@eex.com', 'kalle', 'caf1a3dfb505ffed0d024130f58c5cfa', 'profilepic.jpg');
 
 --
 -- Indexes for dumped tables
@@ -146,17 +148,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

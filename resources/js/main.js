@@ -43,8 +43,8 @@ if (isOpend) {
 });
 
 let message = document.querySelector('.message');
-window.onLoad = function(){
+
     setTimeout(function(){
-        message.classList.add('disable');
+        message.className = "disable";
     }, 3000);
-};
+

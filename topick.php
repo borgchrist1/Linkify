@@ -39,16 +39,19 @@ $previous = $_SERVER["REQUEST_URI"];
                             <p><?php print $post->getPost(); ?></p>
                         </div>
                         <div class="likes">
-                            <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=1&table=posts&class=Post">Up Vote</a>
+                            <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=1&table=posts&class=Post"><img src="resources/img/design/up-vote.png" ></a>
                             <p><?php if($post->getVotes() !== null) print $post->getVotes(); else print 0; ?></p>
-                            <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post">Down Vote</a>
+                            <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post"><img src="resources/img/design/down-vote.png" ></a>
                         </div>
                     </div>
                     <div class="more">
-                        <?php if($_SESSION["id"] === $post->getUser_id()):?>
+                        <?php if (isset($_SESSION["id"])):
+                        if($_SESSION["id"] === $post->getUser_id()):?>
                             <a href="edit-post.php?id=<?php print $postId; ?>">Edit</a>
                             <a href="resources/lib/delete-post.php?id=<?php print $postId; ?>">Delete</a>
-                        <?php endif; ?>
+                        <?php endif;
+                        endif;?>
+
                     </div>
                 </div>
             <?php endforeach; ?>

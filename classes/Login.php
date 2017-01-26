@@ -9,7 +9,7 @@ class Login{
 
         if (count($query) === 1){
             $_SESSION["id"] = $query[0]["id"];
-            return "Success";
+            return "You have bean successfully logged in";
         }
             return "Wrong password or email";
 

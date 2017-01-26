@@ -17,17 +17,9 @@ $posts = $postObjects->getObjects("posts", "Post");
           require "resources/blocks/left-panel.php";
     ?>
         <div class="page-wrapper">
-            <?php if (empty($_SESSION["id"])): ?>
-                <form id="login" method="post" action="resources/lib/login.php">
-                    email:<input type="email" name="email">
-                    Password:<input type="password" name="password">
-                    <input type="hidden" name="token" value="linkify-protection" />
-                    <input type="submit" value="Login">
-                </form>
-                <a href="register.php">Register</a>
-            <?php endif; ?>
-            <div class="message"><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></div>
-            <?php foreach ($posts as $post):
+
+            <?php require "resources/blocks/message.php";
+            foreach ($posts as $post):
                 $user = getAuthor($post->getUser_id()); ?>
             <div class="post-wrapper">
                     <div class="post-head">
@@ -42,9 +34,9 @@ $posts = $postObjects->getObjects("posts", "Post");
                         <p><?php print $post->getPost(); ?></p>
                     </div>
                     <div class="likes">
-                        <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=1&table=posts&class=Post">Up Vote</a>
+                        <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=1&table=posts&class=Post"><img src="resources/img/design/up-vote.png" ></a>
                         <p><?php if($post->getVotes() !== null) print $post->getVotes(); else print 0; ?></p>
-                        <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post">Down Vote</a>
+                        <a href="resources/lib/vote.php?id=<?php print $post->getId(); ?>&vote=-1&table=posts&class=Post"><img src="resources/img/design/down-vote.png" ></a>
                     </div>
                 </div>
                 <div class="more"><a href="topick.php?id=<?php print $post->getId(); ?>">Comment</a></div>

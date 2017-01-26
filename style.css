@@ -97,6 +97,10 @@ overflow: hidden;
   border-bottom: 2px solid #c60060;
 }
 
+.likes img{
+  height: 40px;
+}
+
 .post-avatar{
   height: auto;
   /*width: 140px;*/
@@ -137,7 +141,7 @@ overflow: hidden;
 .comment-wrapper-inner{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-direction: row;
 
 }
@@ -251,6 +255,21 @@ transform: translate3d(25%, 0, 0) !important;
   justify-content: center;
   flex-direction: column;
   /*border-left: 2px solid #c60060;*/
+}
+
+.message{
+  background: #c60060;
+  height: 40px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login{
+  float: right;
+  margin-top: -18px;
+  color: white;
 }
 
 footer{

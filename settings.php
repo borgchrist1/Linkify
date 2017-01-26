@@ -20,6 +20,7 @@ foreach ($users as $key){
         require "resources/blocks/left-panel.php";
         ?>
         <div class="page-wrapper">
+            <?php require "resources/blocks/message.php";?>
             <div class="wrapper">
             <div class="avatar-wrapper">
                 <div class="avatar">
@@ -29,7 +30,6 @@ foreach ($users as $key){
             </div>
 
             <div class="right-side">
-                <?php print $_SESSION["message"]; ?>
                 <div class="form-wrapper">
                     <h2>Edit info</h2>
 

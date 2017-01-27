@@ -54,6 +54,16 @@ $previous = $_SERVER["REQUEST_URI"];
 
                     </div>
                 </div>
+                <div class="comment-wrapper">
+                <form id="comment-form" method="post" action="resources/lib/comments.php">
+                    <textarea name="comment"></textarea>
+                    <input type="submit" value="Comment">
+                    <input type="hidden" name="post_id" value="<?php print $postId; ?>">
+                    <input type="hidden" name="user_id" value="<?php print $_SESSION["id"]; ?>">
+                    <input type="hidden" name="table" value="comments">
+                    <input type="hidden" name="previous" value="<?php print $previous; ?>">
+                </form>
+                </div>
             <?php endforeach; ?>
             <?php
             foreach ($comments as $comment):
@@ -71,19 +81,6 @@ $previous = $_SERVER["REQUEST_URI"];
                 </div>
             <?php endforeach; ?>
 
-
-
-
-
-
-            <form id="comment-form" method="post" action="resources/lib/comments.php">
-                <textarea name="comment"></textarea>
-                <input type="submit" value="Comment">
-                <input type="hidden" name="post_id" value="<?php print $postId; ?>">
-                <input type="hidden" name="user_id" value="<?php print $_SESSION["id"]; ?>">
-                <input type="hidden" name="table" value="comments">
-                <input type="hidden" name="previous" value="<?php print $previous; ?>">
-            </form>
         </div>
         <script type="text/javascript" src="resources/js/main.js">
         </script>

@@ -4,7 +4,7 @@ require "classes/Post.php";
 require "classes/Database.php";
 require "classes/User.php";
 require "classes/Query.php";
-
+$title = "Post";
 ?>
 
 <html>
@@ -42,8 +42,6 @@ require "classes/Query.php";
           </form>
 <!-- end -->
 
-
-    <p><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
         <script type="text/javascript" src="resources/js/main.js"></script>
     </body>
 </html>

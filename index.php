@@ -7,7 +7,7 @@ require "classes/Query.php";
 require "resources/lib/index-get-user.php";
 $postObjects = new Query();
 $posts = $postObjects->getObjects("posts", "Post");
-
+$title = "Home";
 ?>
 <html>
     <?php require "resources/blocks/head.php"; ?>
@@ -17,7 +17,6 @@ $posts = $postObjects->getObjects("posts", "Post");
           require "resources/blocks/left-panel.php";
     ?>
         <div class="page-wrapper">
-
             <?php require "resources/blocks/message.php";
             foreach ($posts as $post):
                 $user = getAuthor($post->getUser_id()); ?>

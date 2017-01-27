@@ -6,9 +6,6 @@ require "../../classes/Forms.php";
 require "../../classes/Query.php";
 $_SESSION["message"] = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
-
-    $_SESSION["message"] = "";
-    $newUser = new Query();
     $arr = $_POST;
     $table = $arr["table"];
     //print $arr["previous"];
@@ -35,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         header("Location: /");
     }
 
-    //print $rows . "<br>" . $values;
     $_SESSION["message"] = "Alright.. All went well";
 
      if($previous !== null){
@@ -45,4 +41,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
      }
 }
 
-//header("Location: /");

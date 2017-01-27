@@ -81,6 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 $validateForm = new Forms();
                 $validateData = $validateForm->checkForms($arr);
                 $changePassword = $query->changePassword($validateData["password"], $_SESSION["id"]);
+                $_SESSION["message"] = "You have successfully updated your password";
                 header("location: ../../settings.php");
             }
 

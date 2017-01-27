@@ -10,6 +10,7 @@ foreach ($users as $key){
     $user = $key;
 }
 //print_r($user);
+$title ="Settings";
 ?>
 <html>
     <?php require "resources/blocks/head.php"; ?>

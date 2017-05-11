@@ -18,12 +18,10 @@ class Comment
 //        if(!$vote = null) $this->vote = $vote;
 //    }
 
-
     public function getId()
     {
         return $this->id;
     }
-
 
     public function getAvatar()
     {
@@ -55,6 +53,7 @@ class Comment
         $db = new Database();
         $query = $db->query("INSERT INTO comments (comment, userId, postId)
             VALUES ('".$this->getComment()."','".$this->getUserId()."','".$this->getPostId()."')");
+
         return $query;
     }
 
@@ -63,6 +62,7 @@ class Comment
         $db = new Database();
         $query = $db->query("INSERT INTO comments (vote)
             VALUES ('".$this->getVote()."')");
+
         return $query;
     }
 
@@ -70,7 +70,7 @@ class Comment
     {
         $db = new Database();
         $query = $db->getObjects("SELECT * FROM comment
-            WHERE user_id ='".$postId."'", "comments");
+            WHERE user_id ='".$postId."'", 'comments');
 
 //       return $result = usort($query, function($a, $b)
 //        {

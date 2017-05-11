@@ -1,31 +1,31 @@
 <?php
 
 session_start();
-require "classes/User.php";
-require "classes/Database.php";
+require 'classes/User.php';
+require 'classes/Database.php';
 $userObject = new User();
-$users = $userObject->getUserObject($_SESSION["id"]);
+$users = $userObject->getUserObject($_SESSION['id']);
 $user = null;
 foreach ($users as $key) {
     $user = $key;
 }
 //print_r($user);
-$title ="Settings";
+$title = 'Settings';
 ?>
 <html>
-    <?php require "resources/blocks/head.php"; ?>
+    <?php require 'resources/blocks/head.php'; ?>
 
     <body>
         <?php //require "resources/blocks/big-header.php";
-        require "resources/blocks/header.php";
-        require "resources/blocks/left-panel.php";
+        require 'resources/blocks/header.php';
+        require 'resources/blocks/left-panel.php';
         ?>
         <div class="page-wrapper">
-            <?php require "resources/blocks/message.php";?>
+            <?php require 'resources/blocks/message.php'; ?>
             <div class="wrapper">
             <div class="avatar-wrapper">
                 <div class="avatar">
-                    <img src="resources/img/users/<?php print $user->getID() . "/" . $user->getAvatar(); ?>"
+                    <img src="resources/img/users/<?php echo $user->getID().'/'.$user->getAvatar(); ?>"
                 </div>
 
             </div>
@@ -36,10 +36,10 @@ $title ="Settings";
 
                        <form id="settings-form" method="post" action="resources/lib/settings.php" enctype="multipart/form-data">
                         Avatar:<input type="file" name="file" accept="img/*"><br>
-                            Username<input type="text" name="username" value="<?php print $user->getUsername(); ?>"><br>
-                            Email:<input type="email" name="email" value="<?php print $user->getEmail(); ?>"><br>
+                            Username<input type="text" name="username" value="<?php echo $user->getUsername(); ?>"><br>
+                            Email:<input type="email" name="email" value="<?php echo $user->getEmail(); ?>"><br>
                             Password:<input type="password" name="password"><br>
-                            <input type="hidden" name="oldEmail" value="<?php print $user->getEmail(); ?>"><br>
+                            <input type="hidden" name="oldEmail" value="<?php echo $user->getEmail(); ?>"><br>
                             <input type="submit" value="Save">
 
                     </form>

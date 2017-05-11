@@ -2,12 +2,12 @@
 
 class Database
 {
-    private $host = "localhost";
-    private $dbName = "linkify";
+    private $host = 'localhost';
+    private $dbName = 'linkify';
     private $port = 3306;
-    private $username = "root";
-    private $password = "root";
-    private $socetType = "mysql";
+    private $username = 'root';
+    private $password = 'root';
+    private $socetType = 'mysql';
 
     private $instance = null;
 
@@ -15,7 +15,7 @@ class Database
     {
         if ($this->instance == null) {
             try {
-                $db = new PDO(''.$this->socetType .':host='. $this->host . ';port='. $this->port .';dbname='. $this->dbName .';', $this->username, $this->password);
+                $db = new PDO(''.$this->socetType.':host='.$this->host.';port='.$this->port.';dbname='.$this->dbName.';', $this->username, $this->password);
                 //$db = new PDO("mysql:host=localhost;port=3306;dbname=contacts;charset=utf8", "root", "root");
                 $this->instance = $db;
             } catch (Exception $e) {
@@ -29,6 +29,7 @@ class Database
         $query = $this->instance->prepare($sql);
         $query->execute();
         $result = $query->fetchAll();
+
         return $result;
     }
 
@@ -38,6 +39,7 @@ class Database
         $query->execute();
         $query->setFetchMode(PDO::FETCH_CLASS, $class);
         $result = $query->fetchAll();
+
         return $result;
     }
 

@@ -3,33 +3,33 @@
 
 session_start();
 //session_unset();
-require "../../classes/Login.php";
-require "../../classes/Database.php";
+require '../../classes/Login.php';
+require '../../classes/Database.php';
 
 $db = new Database();
 $login = new Login();
 
-$token = "linkify-protection";
-$_SESSION["token"] = md5($token);
-$main_token = md5($_SESSION["token"]);
+$token = 'linkify-protection';
+$_SESSION['token'] = md5($token);
+$main_token = md5($_SESSION['token']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST["email"]) && isset($_POST["password"])) {
-        if (isset($_POST["token"]) == $main_token) {
-            $email = $login->cleanData($_POST["email"]);
-            $password = $login->cleanData($_POST["password"]);
+    if (isset($_POST['email']) && isset($_POST['password'])) {
+        if (isset($_POST['token']) == $main_token) {
+            $email = $login->cleanData($_POST['email']);
+            $password = $login->cleanData($_POST['password']);
 
-            if ($email !== "" && $password !== "") {
+            if ($email !== '' && $password !== '') {
                 $password = $login->encryptPassword($password);
-                $_SESSION["message"] = $login->loginUser($email, $password);
+                $_SESSION['message'] = $login->loginUser($email, $password);
             }
         } else {
-            print "error token";
+            echo 'error token';
         }
     } else {
-        die("No email and/or password");
+        die('No email and/or password');
     }
 }
 
-header("Location: /");
+header('Location: /');
 die();

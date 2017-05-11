@@ -1,3 +1,4 @@
+[![StyleCI](https://styleci.io/repos/75823808/shield?branch=master)](https://styleci.io/repos/75823808)
 # Linkify
 This is a basic messageboard in php.
 It's a school project and there is still som things that's need to be done.

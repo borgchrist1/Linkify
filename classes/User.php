@@ -1,4 +1,5 @@
 <?php
+
 class User
 {
     private $id;
@@ -46,7 +47,7 @@ class User
     {
         $db = new Database();
         $query = $db->getObjects("SELECT * FROM users
-            WHERE id ='".$id."'", "User");
+            WHERE id ='".$id."'", 'User');
 
         return $query;
     }

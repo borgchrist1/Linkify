@@ -2,7 +2,6 @@
 
 class Query
 {
-
     private $db;
 
     public function __construct()
@@ -10,29 +9,28 @@ class Query
         $this->db = new Database();
     }
 
-    public function getObjectById ($id, $table, $class)
+    public function getObjectById($id, $table, $class)
     {
         $query = $this->db->getObjects("SELECT * FROM {$table}
             WHERE id = {$id}", $class);
         return $query;
     }
 
-    public function getObjectByPostId ($id, $table, $class)
+    public function getObjectByPostId($id, $table, $class)
     {
         $query = $this->db->getObjects("SELECT * FROM {$table}
             WHERE post_id = {$id}", $class);
         return $query;
     }
 
-    public function getObjects ($table, $class)
+    public function getObjects($table, $class)
     {
         $query = $this->db->getObjects("SELECT * FROM {$table}", $class);
         return $query;
     }
 
-    public function insertChangesToPost ($id, $head, $url, $post)
+    public function insertChangesToPost($id, $head, $url, $post)
     {
-
         $query = $this->db->query("UPDATE posts
             SET head='".$head."',
             url='".$url."',
@@ -41,9 +39,8 @@ class Query
         return $query;
     }
 
-    public function insertChangesToUser ($id, $email, $username)
+    public function insertChangesToUser($id, $email, $username)
     {
-
         $query = $this->db->query("UPDATE users
             SET username='".$username."',
             email='".$email."'
@@ -51,7 +48,7 @@ class Query
         return $query;
     }
 
-    public function insertAvatar ($avatar, $id)
+    public function insertAvatar($avatar, $id)
     {
         $query = $this->db->query("UPDATE users
             SET avatar='".$avatar."'
@@ -67,9 +64,8 @@ class Query
         return $query;
     }
 
-    public function insertVoteToPost ($id, $votes, $table)
+    public function insertVoteToPost($id, $votes, $table)
     {
-
         $query = $this->db->query("UPDATE {$table}
             SET votes='".$votes."'
             WHERE id='".$id."'");
@@ -87,10 +83,10 @@ WHERE id = '" . $id."'");
     {
         $query = $this->db->query("SELECT * FROM users
     WHERE password='".$password."' AND id='".$id."'");
-       return $query;
+        return $query;
     }
 
-    public  function encryptPassword ($password)
+    public function encryptPassword($password)
     {
         return md5($password);
     }
@@ -108,17 +104,17 @@ WHERE id = '" . $id."'");
                 $row = $row . $key . ", ";
             }
         }
-            return $row;
-        }
+        return $row;
+    }
 
-        public static function createValueString($arr)
+    public static function createValueString($arr)
     {
         $row = null;
         $values = null;
         $i = 0;
         foreach ($arr as $key => $value) {
             $i++;
-            if(!is_numeric($value)) {
+            if (!is_numeric($value)) {
                 $value = "'" . $value . "'";
             }
 
@@ -131,14 +127,10 @@ WHERE id = '" . $id."'");
         return $values;
     }
 
-    public  function insertData($rows, $values, $table)
+    public function insertData($rows, $values, $table)
     {
         $query = $this->db->query("INSERT INTO {$table} ({$rows})
         VALUES ({$values})");
         return $query;
     }
-
-
-
-
 }

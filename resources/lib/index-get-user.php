@@ -5,7 +5,7 @@ function getAuthor($id)
 {
     $getUser = new Query();
     $users = $getUser->getObjectById($id, "users", "User");
-    foreach ($users as $user){
+    foreach ($users as $user) {
         return $user;
     }
 }

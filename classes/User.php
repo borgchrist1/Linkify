@@ -29,7 +29,7 @@ class User
 
     public function getEmail()
     {
-      return  $this->email;
+        return  $this->email;
     }
 
     public function getUsername()
@@ -51,7 +51,7 @@ class User
         return $query;
     }
 
-    public function insertChanges ($id, $name, $email, $username)
+    public function insertChanges($id, $name, $email, $username)
     {
         $db = new Database();
         $query = $db->query("UPDATE users
@@ -62,5 +62,4 @@ class User
     }
 
     //return new self(name, email, username, password, avatar);
-
 }

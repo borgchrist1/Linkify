@@ -9,17 +9,18 @@ class Database
     private $password = "root";
     private $socetType = "mysql";
 
-    private $instance = NULL;
+    private $instance = null;
 
-    function __construct()
+    public function __construct()
     {
-        if ($this->instance == NULL) {
+        if ($this->instance == null) {
             try {
-                $db = new PDO (''.$this->socetType .':host='. $this->host . ';port='. $this->port .';dbname='. $this->dbName .';', $this->username, $this->password );
+                $db = new PDO(''.$this->socetType .':host='. $this->host . ';port='. $this->port .';dbname='. $this->dbName .';', $this->username, $this->password);
                 //$db = new PDO("mysql:host=localhost;port=3306;dbname=contacts;charset=utf8", "root", "root");
                 $this->instance = $db;
             } catch (Exception $e) {
-                die($e->getMessage());            }
+                die($e->getMessage());
+            }
         }
     }
 

@@ -9,16 +9,14 @@ $vote = $_GET;
 $postVote = null;
 $query = new Query();
 $post = $query->getObjectById($vote["id"], $vote["table"], $vote["class"]);
-foreach ($post as $obj){
-
+foreach ($post as $obj) {
     $postVote = $obj->getVotes();
-
 }
 
 $newScore = $postVote + $vote["vote"];
 $insert = $query->insertVoteToPost($vote["id"], $newScore, $vote["table"]);
 
-if (!is_array($insert)){
+if (!is_array($insert)) {
     $_SESSION["message"] = $insert;
     header("Location: ../../index.php");
 }

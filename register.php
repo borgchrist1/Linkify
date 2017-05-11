@@ -21,7 +21,7 @@ $title = "Register";
                 <input type="submit" value="Register">
             </form>
         </div>
-        <?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?>
+        <?php if (!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?>
         <script type="text/javascript" src="resources/js/main.js">
         </script>
     </body>

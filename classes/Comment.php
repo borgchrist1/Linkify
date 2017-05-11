@@ -77,7 +77,5 @@ class Comment
 //            return strcmp($a->vote, $b->vote);
 //        });
             return $query;
-
     }
-
 }

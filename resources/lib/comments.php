@@ -5,13 +5,12 @@ session_start();
 require "../../classes/Forms.php";
 require "../../classes/Query.php";
 $_SESSION["message"] = "";
-if ($_SERVER["REQUEST_METHOD"] === "POST"){
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $arr = $_POST;
     $table = $arr["table"];
     //print $arr["previous"];
 
-     if($arr["previous"]){
-
+     if ($arr["previous"]) {
          $previous = $arr["previous"];
          unset($arr["previous"]);
      }
@@ -27,17 +26,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $query = new Query();
     $result = $query->insertData($rows, $values, $table);
 
-    if (!is_array($result)){
+    if (!is_array($result)) {
         $_SESSION["message"] = $result;
         header("Location: /");
     }
 
     $_SESSION["message"] = "Alright.. All went well";
 
-     if($previous !== null){
-         header("Location: {$previous}");
-     }else {
-         header("Location: ../../index.php");
-     }
+    if ($previous !== null) {
+        header("Location: {$previous}");
+    } else {
+        header("Location: ../../index.php");
+    }
 }
-

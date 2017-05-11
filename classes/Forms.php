@@ -2,123 +2,113 @@
 require "Database.php";
 class Forms
 {
-
-    public function cleanData ($data)
+    public function cleanData($data)
     {
         return trim(stripcslashes($data));
-
     }
 
-    Public function checkEmail ($email)
+    public function checkEmail($email)
     {
-
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return false;
         }
     }
 
-    Public function checkPassword ($password, $rePassword) {
-        if ($password !== $rePassword){
+    public function checkPassword($password, $rePassword)
+    {
+        if ($password !== $rePassword) {
             return false;
         }
 
         return true;
     }
 
-    public  function encryptPassword ($password)
+    public function encryptPassword($password)
     {
         return md5($password);
     }
 
     public function checkForms($arr)
     {
-       foreach ($arr as $key => $value){
-           if($key === ""){
-               return "All fields must be filed";
-           }
+        foreach ($arr as $key => $value) {
+            if ($key === "") {
+                return "All fields must be filed";
+            }
 
-           if ($key !== "password") {
-               trim(stripcslashes($value));
-
-           }
-           if ($key === "email"){
-               if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                   return "Your email is't correctly typed";
-                   break;
-               }
+            if ($key !== "password") {
+                trim(stripcslashes($value));
+            }
+            if ($key === "email") {
+                if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                    return "Your email is't correctly typed";
+                    break;
+                }
                
                 $email = $this->getEmailById($arr["id"]);
-               foreach ($email as $item){
-                   if ($item["email"] !== $value){
+                foreach ($email as $item) {
+                    if ($item["email"] !== $value) {
+                        $uniqeEmail = $this->uniqueEmail($value);
+                        if ($uniqeEmail === false) {
+                            return "Email already exists";
 
-                       $uniqeEmail = $this->uniqueEmail($value);
-                       if ($uniqeEmail === false){
+                            break;
+                        }
+                    }
+                }
+            }
 
-                           return "Email already exists";
+            if ($key === "username") {
+                $username = $this->getUsernameById($arr["id"]);
+                foreach ($username as $item) {
+                    if ($item["username"] !== $value) {
+                        $uniqueUsername = $this->uniqueUsername($value);
+                        if ($uniqueUsername === false) {
+                            return "Username already exists";
+                            break;
+                        }
+                    }
+                }
+            }
 
-                           break;
-                       }
-                   }
-               }
-
-
-           }
-
-           if ($key === "username") {
-               $username = $this->getUsernameById($arr["id"]);
-               foreach ($username as $item) {
-                   if ($item["username"] !== $value) {
-
-                       $uniqueUsername = $this->uniqueUsername($value);
-                       if ($uniqueUsername === false) {
-                           return "Username already exists";
-                           break;
-                       }
-
-                   }
-
-               }
-           }
-
-           if ($key === "password" || $key === "rePassword"){
+            if ($key === "password" || $key === "rePassword") {
                 $arr["password"] = $this->encryptPassword($value);
                //print "3d <br>" . $value;
               //  print $arr["password"] . "<br>";
+            }
 
-           }
+            if ($key === "rePassword") {
+                $arr["rePassword"] = $this->encryptPassword($value);
+                if ($arr["rePassword"] !== $arr["password"]) {
+                    return "Passwords don't match";
+                    break;
+                }
 
-           if ($key === "rePassword"){
-               $arr["rePassword"] = $this->encryptPassword($value);
-               if ($arr["rePassword"] !== $arr["password"]){
-                   return "Passwords don't match";
-                   break;
-               }
+                unset($arr["rePassword"]);
+            }
+        }
 
-               unset($arr["rePassword"]);
-           }
-
-       }
-
-       return $arr;
+        return $arr;
     }
 
-    Public function uniqueEmail ($email){
+    public function uniqueEmail($email)
+    {
         $db = new Database();
 
         $query = $db->query("SELECT * FROM users
             WHERE email='".$email."'");
-        if (count($query) > 0){
+        if (count($query) > 0) {
             return false;
         }
         return true;
     }
 
-    Public function uniqueUsername ($username){
+    public function uniqueUsername($username)
+    {
         $db = new Database();
 
         $query = $db->query("SELECT * FROM users
             WHERE username='".$username."'");
-        if (count($query) > 0){
+        if (count($query) > 0) {
             return false;
         }
         return true;
@@ -143,5 +133,4 @@ class Forms
 
         return $query;
     }
-
 }

@@ -6,7 +6,7 @@ require "classes/Database.php";
 $userObject = new User();
 $users = $userObject->getUserObject($_SESSION["id"]);
 $user = null;
-foreach ($users as $key){
+foreach ($users as $key) {
     $user = $key;
 }
 //print_r($user);

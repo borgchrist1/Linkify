@@ -13,7 +13,7 @@ $token = "linkify-protection";
 $_SESSION["token"] = md5($token);
 $main_token = md5($_SESSION["token"]);
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST["email"]) && isset($_POST["password"])) {
         if (isset($_POST["token"]) == $main_token) {
             $email = $login->cleanData($_POST["email"]);

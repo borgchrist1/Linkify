@@ -1,6 +1,7 @@
 <?php
 
-class Post {
+class Post
+{
     private $id;
     private $head;
     private $url;
@@ -56,7 +57,7 @@ class Post {
 //        return $query;
 //    }
 
-    Public function createNewPost($head, $post, $userId, $date)
+    public function createNewPost($head, $post, $userId, $date)
     {
         $db = new Database();
         $query = $db->query("INSERT INTO posts (head, post, user_id, datum)
@@ -64,14 +65,14 @@ class Post {
         return $query;
     }
 
-    Public function getPosts()
+    public function getPosts()
     {
         $db = new Database();
         $query = $db->getObjects("SELECT * FROM posts", "Post");
         return $query;
     }
 
-    public function getSinglePost ($id)
+    public function getSinglePost($id)
     {
         $db = new Database();
         $query = $db->getObjects("SELECT * FROM posts
@@ -83,5 +84,4 @@ class Post {
     {
         return new self($arr);
     }
-
 }

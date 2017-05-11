@@ -4,14 +4,13 @@ require "classes/Post.php";
 require "classes/Database.php";
 require "classes/User.php";
 require "classes/Query.php";
-if($_GET["id"]){
+if ($_GET["id"]) {
     $editPost = null;
     $getPost = new Query();
     $posts = $getPost->getObjectById($_GET["id"], "posts", "Post");
-    foreach ($posts as $post){
+    foreach ($posts as $post) {
         $editPost = $post;
     }
-
 }
 ?>
 
@@ -26,7 +25,9 @@ if($_GET["id"]){
           <form id="form-post" method="post" action="resources/lib/edit-post.php">
               Head:<input type="text" name="head" value="<?php if (!empty($_GET["id"])): print $editPost->getHead(); endif; ?>">
               Url:<input type="text" name="url" value="<?php if (!empty($_GET["id"])): print $editPost->getUrl(); ?>">
-              <textarea name="post"><?php if (!empty($_GET["id"])) print $editPost->getPost(); ?></textarea>
+              <textarea name="post"><?php if (!empty($_GET["id"])) {
+            print $editPost->getPost();
+        } ?></textarea>
                   <?php endif; ?>
               <input type="hidden" name="post_id" value="<?php print $_GET["id"]; ?>">
               <input type="hidden" name="datum" value="20170117">
@@ -37,7 +38,7 @@ if($_GET["id"]){
 
         <
 
-    <p><?php if(!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
+    <p><?php if (!empty($_SESSION["message"])): print $_SESSION["message"]; endif; ?></p>
         <script type="text/javascript" src="resources/js/main.js">
         </script>
     </body>

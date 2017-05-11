@@ -3,10 +3,10 @@ session_start();
 //require "../../classes/Database.php";
 require "../../classes/Query.php";
 require "../../classes/Forms.php";
-if ($_SERVER["REQUEST_METHOD"] === "POST"){
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $validateForm = new Forms();
 
-    if (!isset($_POST["oldPassword"])){
+    if (!isset($_POST["oldPassword"])) {
         $arr = $_POST;
         $arr["id"] = $_SESSION["id"];
         $query = new Query();
@@ -14,12 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
         $correctPassword = $query->correctPassword($password, $arr["id"]);
 
-        if (empty($correctPassword)){
+        if (empty($correctPassword)) {
             $_SESSION["message"] = "Wrong password";
             header("location: ../../settings.php");
-
         } else {
-
             if (is_uploaded_file($_FILES['file']['tmp_name'])) {
                 $dir = "resources/img/users/";
                 $path = scandir("../../{$dir}");
@@ -54,39 +52,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 // print $posts;
                 header("Location: ../../settings.php");
             } else {
-
-
                 $insertUpdate = $query->insertChangesToUser((int)$_SESSION["id"], $posts["email"], $posts["username"]);
 
                 $_SESSION["message"] = "Alright, your info was updated";
                 header("location: ../../settings.php");
-
             }
         }
     }
 
-    if (!empty($_POST["oldPassword"])){
+    if (!empty($_POST["oldPassword"])) {
         $arr = $_POST;
         $arr["id"] = $_SESSION["id"];
         $query = new Query();
         $password = $query->encryptPassword($arr["password"]);
         $correctPassword = $query->correctPassword($password, $arr["id"]);
-        if (empty($password)){
+        if (empty($password)) {
             $_SESSION["message"] = "Wrong password";
             header("location: ../../settings.php");
         } else {
-            If ($arr["password"] === $arr["rePassword"]) {
-
-
+            if ($arr["password"] === $arr["rePassword"]) {
                 $validateForm = new Forms();
                 $validateData = $validateForm->checkForms($arr);
                 $changePassword = $query->changePassword($validateData["password"], $_SESSION["id"]);
                 $_SESSION["message"] = "You have successfully updated your password";
                 header("location: ../../settings.php");
             }
-
         }
-
-
     }
 }

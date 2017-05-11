@@ -10,7 +10,6 @@ class Post
     private $date;
     private $votes;
 
-
     public function getId()
     {
         return $this->id;
@@ -62,13 +61,15 @@ class Post
         $db = new Database();
         $query = $db->query("INSERT INTO posts (head, post, user_id, datum)
         VALUES ('".$head."', '".$post."', '".$userId."', '".$date."')");
+
         return $query;
     }
 
     public function getPosts()
     {
         $db = new Database();
-        $query = $db->getObjects("SELECT * FROM posts", "Post");
+        $query = $db->getObjects('SELECT * FROM posts', 'Post');
+
         return $query;
     }
 
@@ -76,7 +77,8 @@ class Post
     {
         $db = new Database();
         $query = $db->getObjects("SELECT * FROM posts
-            WHERE id ='".$id."'", "Post");
+            WHERE id ='".$id."'", 'Post');
+
         return $query;
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 class Register
 {
     public function addUser($email, $password)
@@ -19,6 +20,7 @@ class Register
 
         return true;
     }
+
     public function checkPassword($password, $rePassword)
     {
         if ($password !== $rePassword) {
@@ -43,6 +45,7 @@ class Register
         if (count($query) !== 0) {
             return false;
         }
+
         return true;
     }
 }

@@ -1,5 +1,6 @@
 <?php
-require "Database.php";
+
+require 'Database.php';
 class Forms
 {
     public function cleanData($data)
@@ -31,25 +32,25 @@ class Forms
     public function checkForms($arr)
     {
         foreach ($arr as $key => $value) {
-            if ($key === "") {
-                return "All fields must be filed";
+            if ($key === '') {
+                return 'All fields must be filed';
             }
 
-            if ($key !== "password") {
+            if ($key !== 'password') {
                 trim(stripcslashes($value));
             }
-            if ($key === "email") {
+            if ($key === 'email') {
                 if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
                     return "Your email is't correctly typed";
                     break;
                 }
-               
-                $email = $this->getEmailById($arr["id"]);
+
+                $email = $this->getEmailById($arr['id']);
                 foreach ($email as $item) {
-                    if ($item["email"] !== $value) {
+                    if ($item['email'] !== $value) {
                         $uniqeEmail = $this->uniqueEmail($value);
                         if ($uniqeEmail === false) {
-                            return "Email already exists";
+                            return 'Email already exists';
 
                             break;
                         }
@@ -57,33 +58,33 @@ class Forms
                 }
             }
 
-            if ($key === "username") {
-                $username = $this->getUsernameById($arr["id"]);
+            if ($key === 'username') {
+                $username = $this->getUsernameById($arr['id']);
                 foreach ($username as $item) {
-                    if ($item["username"] !== $value) {
+                    if ($item['username'] !== $value) {
                         $uniqueUsername = $this->uniqueUsername($value);
                         if ($uniqueUsername === false) {
-                            return "Username already exists";
+                            return 'Username already exists';
                             break;
                         }
                     }
                 }
             }
 
-            if ($key === "password" || $key === "rePassword") {
-                $arr["password"] = $this->encryptPassword($value);
+            if ($key === 'password' || $key === 'rePassword') {
+                $arr['password'] = $this->encryptPassword($value);
                //print "3d <br>" . $value;
               //  print $arr["password"] . "<br>";
             }
 
-            if ($key === "rePassword") {
-                $arr["rePassword"] = $this->encryptPassword($value);
-                if ($arr["rePassword"] !== $arr["password"]) {
+            if ($key === 'rePassword') {
+                $arr['rePassword'] = $this->encryptPassword($value);
+                if ($arr['rePassword'] !== $arr['password']) {
                     return "Passwords don't match";
                     break;
                 }
 
-                unset($arr["rePassword"]);
+                unset($arr['rePassword']);
             }
         }
 
@@ -99,6 +100,7 @@ class Forms
         if (count($query) > 0) {
             return false;
         }
+
         return true;
     }
 
@@ -111,6 +113,7 @@ class Forms
         if (count($query) > 0) {
             return false;
         }
+
         return true;
     }
 
